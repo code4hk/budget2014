@@ -1,0 +1,27 @@
+ <div class="container-fluid">
+    <div class="row">
+        <div class="atom col-xs-10 col-sm-5 col-md-3">
+            <input type="checkbox" name="showYear" ng-model="show2013">2013
+            <input type="checkbox" name="showYear" ng-model="show2014">2014
+
+
+        </div>
+    </div>
+        <div clas="row">
+            
+            Income:                <input type="text" ng-model="y2013.salaryTaxInfo.income">
+        </div>
+    {{y2013.salaryTaxInfo}}
+    
+    <div class="row">
+        <div class="atom col-xs-10 col-sm-5 col-md-3"> <div ng-show="show2013">2013: ${{y2013.sumTax}}</div></div>  
+        <div class="atom col-xs-10 col-sm-5 col-md-3"><div ng-show="show2014">2014: $x</div></div>    
+        <!-- <div class="atom col-xs-10 col-sm-5 col-md-3"><input type="text"> </div>    -->
+        
+        
+    </div>    
+
+    <a class="control-btn fui-arrow-down" href="#"> </a>
+</div>
+
+<link rel="stylesheet" href="http://i.icomoon.io/public/temp/4ad175e1e9/UntitledProject2/style.css">
