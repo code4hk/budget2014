@@ -1,27 +1,77 @@
- <div class="container-fluid">
-    <div class="row">
-        <div class="atom col-xs-10 col-sm-5 col-md-3">
-            <input type="checkbox" name="showYear" ng-model="show2013">2013
-            <input type="checkbox" name="showYear" ng-model="show2014">2014
-
-
+<div class="calculator-header">
+   <div class="container-fluid">
+    <div class="row header-row">
+        <div class="col-xs-4"> Budget2014</div>
+        <div class="col-xs-1"><span class="yearCheckboxLabel">2013</span></div>
+        <div class=" col-xs-3">
+            <div class="flatRoundedCheckbox">
+                <input type="checkbox" name="showYear" id="y2013Checkbox" ng-model="show2013" />
+                <label for="y2013Checkbox"></label>
+                <div></div>
+            </div>
+        </div>
+        <div class="col-xs-1"> <span class="yearCheckboxLabel">2014</span></div>
+        <div class=" col-xs-3">
+            <div class="flatRoundedCheckbox">
+                <input type="checkbox" name="showYear" id="y2014Checkbox" ng-model="show2014" />
+                <label for="y2014Checkbox"></label>
+                <div></div>
+            </div>
         </div>
     </div>
-        <div clas="row">
-            
-            Income:                <input type="text" ng-model="y2013.salaryTaxInfo.income">
-        </div>
-    {{y2013.salaryTaxInfo}}
-    
+</div>
+</div>
+<div class="container-fluid content">
+<!--     <div class="calculator-header">
+        <h1>Budget Calculator</h1>
+        <div>Header2</div>
+    </div>
+    <div class="outer">
+        <span class="banner">LOGO</span>
+        <div class="calculator-header"><div>Header1</div></div>
+    </div>
+    <div class="content">Content</div> -->
     <div class="row">
-        <div class="atom col-xs-10 col-sm-5 col-md-3"> <div ng-show="show2013">2013: ${{y2013.sumTax}}</div></div>  
-        <div class="atom col-xs-10 col-sm-5 col-md-3"><div ng-show="show2014">2014: $x</div></div>    
+        <div class="col-xs-3">
+            <span class="icon-svg"></span>煙草稅
+        </div>
+        <div class="col-xs-4"><input type="text" ng-model="living.cigaretteCount" maxlength="4" size="4">包<small>（20支捲煙）</small></div>
+        <div class="col-xs-2 y2013tax">$ {{y2013.cigaretteTax | number:2}}
+        </div>
+        <div class="col-xs-2 y2014tax">$ {{y2014.cigaretteTax | number:2}}
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <span class="icon-transportation_car"></span>汽車首次登記稅
+        </div>
+        <div class="col-xs-4"><input type="text" ng-model="living.firstCarCount" maxlength="4" size="4">架</div>
+            <div class="col-xs-2 y2013tax">$ 123
+        </div>
+        <div class="col-xs-2 y2014tax">$ 1234 
+        </div>
+    </div>
+
+        <div class="row">
+        <div class="col-xs-3">
+            Income: <input type="text" ng-model="y2013.salaryTaxInfo.income">
+        </div>
+    </div>
+   
+    <div class="row">
+        <div class="atom col-xs-10 col-sm-5 col-md-3"> <div ng-show="show2013">2013: $ {{y2013.sumTax | number:2}}</div></div> 
+        <div class="atom col-xs-10 col-sm-5 col-md-3"><div ng-show="show2014">2014: $ {{y2013.sumTax | number:2}}</div></div>   
         <!-- <div class="atom col-xs-10 col-sm-5 col-md-3"><input type="text"> </div>    -->
-        
-        
-    </div>    
+       
+    </div>   
+
+
 
     <a class="control-btn fui-arrow-down" href="#"> </a>
 </div>
+{{living}}
+{{y2013}}
+{{y2014}}
 
 <link rel="stylesheet" href="http://i.icomoon.io/public/temp/4ad175e1e9/UntitledProject2/style.css">
