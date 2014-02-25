@@ -58,7 +58,9 @@ var allowances = {
         "dependentSiblings": 33000,
         "dependentDisabledParents": 38000,
         "dependent60Parents": 38000,
+        "dependent60ParentsResidedWith": 38000,
         "dependent55Parents": 19000,
+        "dependent55ParentsResidedWith": 19000,
         "singleParent": 120000,
         "disabledDependent": 66000
     },
@@ -70,7 +72,9 @@ var allowances = {
         "dependentSiblings": 33000,
         "dependentDisabledParents": 38000,
         "dependent60Parents": 40000, //TBC
+        "dependent60ParentsResidedWith": 40000,
         "dependent55Parents": 20000, //TBC
+        "dependent55ParentsResidedWith": 20000,
         "singleParent": 120000,
         "disabledDependent": 66000
     }

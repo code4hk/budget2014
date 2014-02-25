@@ -70,7 +70,7 @@ define(
                             $scope.y2014 = $scope.$parent.$y2014;
                             $scope.y2013 = $scope.$parent.$y2013;
                     },
-                    template: '<span ng-class="payClass(true)" ng-show="diff(propKey)>0">多</span><span  ng-class="payClass(false)" ng-show="diff(propKey)<=0">少 </span>  $ {{diff(propKey)| number:2}}'
+                    template: '<span ng-class="payClass(true)" ng-show="diff(propKey)>0">多</span><span  ng-class="payClass(false)" ng-show="diff(propKey)<0">少 </span> <span ng-show="diff(propKey)!=0"> $ {{diff(propKey)| number:2}}</span>'
                 };
         });
 

@@ -65,7 +65,7 @@ define(
 
                 var livingItems = ['cigarette','water','electricity','firstCar'];
                 var allItems =['living','salary'];
-                var allowancesItems = ["basic","married","child","bornChild","dependentSiblings","dependent60Parents","dependent55Parents","singleParent","disabledDependent"];
+                var allowancesItems = ["basic","married","child","bornChild","dependentSiblings","dependent60Parents","dependent60ParentsResidedWith","dependent55Parents","dependent55ParentsResidedWith","singleParent","disabledDependent"];
                 var deductionsItems = ["outgoingExpenses","selfEduExpenses","donations","mpf","others"];
 
                 var init = function() {
@@ -137,6 +137,10 @@ define(
                     });
 
                      $scope[year]['salary']['allowancesEntitled']['totalChild']= $scope[year]['salary']['allowancesEntitled']['bornChild']+$scope[year]['salary']['allowancesEntitled']['child'];
+                   
+                      $scope[year]['salary']['allowancesEntitled']['dependent55ParentsTotal']= $scope[year]['salary']['allowancesEntitled']['dependent55Parents']+$scope[year]['salary']['allowancesEntitled']['dependent55ParentsResidedWith'];
+                      $scope[year]['salary']['allowancesEntitled']['dependent60ParentsTotal']= $scope[year]['salary']['allowancesEntitled']['dependent60Parents']+$scope[year]['salary']['allowancesEntitled']['dependent60ParentsResidedWith'];
+                   
                     // _calculator.calAllowances
                    // $scope[year].allowancesEntitled ={};
 
