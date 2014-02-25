@@ -2,8 +2,10 @@
 
 /* Controllers */
 
+//TODO extract tax cal lib or service and test it
+
 define(
-    ["angular"], function() {
+    ["angular","hkTaxCal"], function(angular,calculator) {
 
         // http://www.ird.gov.hk/eng/ese/st_comp_2012_13/stcfrm.htm
         //test case: calculation compare with them, extract js there to calculate
@@ -15,32 +17,75 @@ define(
 
                 var initYear = function(year) {
                     $scope[year] = {};
+                    $scope[year]['salary']={
+                        "allowancesEntitled":{},
+                        "deductionsEntitled":{},
+                        "tax":{}
+                    }
                 };
 
                 initYear('y2013');
                 initYear('y2014');
 
-                $scope['y2013'].cigaretteTaxFormula = 34.12;
-                $scope['y2014'].cigaretteTaxFormula = 34.12;
+                $scope['y2013'].cigaretteFormula = 34.12;
+                $scope['y2014'].cigaretteFormula = 34.12*1.2;
+
+                $scope['y2013'].waterFormula = 1 * 12;
+                $scope['y2014'].waterFormula = 1.2 * 12; //TODO
+
+                $scope['y2013'].electricityFormula = 1 * 12;
+                $scope['y2014'].electricityFormula = 1.2 * 12; //TODO
+
+                $scope['y2013'].firstCarFormula = 0;
+                $scope['y2014'].firstCarFormula = 1000;//TODO
+
+//                 Private cars- 
+ 
+// (a) on the first $150000 of taxable value.................................. 40% 
+// (b) on the next $150000 ............................................................ 75% 
+// (c) on the next $200000 ........................................................... 100% 
+// (d) on the remainder ................................................................. 115% 
+
+                
+
+                // http://www.gov.hk/tc/residents/taxes/motortax/
+
+
+                var formulas = {
+                    "y2013": {
+                        "water": 1,
+                        "electricity": 1
+                    },
+                    "y2014": {
+                        "water":1,
+                        "electricity":1
+                    }
+                }
+
+
+                var livingItems = ['cigarette','water','electricity','firstCar'];
+                var allItems =['living','salary'];
+                var allowancesItems = ["basic","married","child","bornChild","dependentSiblings","dependent60Parents","dependent55Parents","singleParent","disabledDependent"];
+                var deductionsItems = ["outgoingExpenses","selfEduExpenses","donations","mpf","others"];
 
                 var init = function() {
                     var living = {};
-                    living.cigaretteCount = 0;
-                    living.firstCarCount = 0;
+                    livingItems.map(function(key) {living[key+'Count']=0;});
+
+                    var allowances={};
+                    //0 as false
+                    allowancesItems.map(function(key) {allowances[key+'Count']=0});
+                    allowances["basicCount"]=1;
+
+
+                    var deductions={};
+                    deductionsItems.map(function(key) {deductions[key+'Count']=0});
+                    
 
                     var salaryTaxInfo = {};
                     salaryTaxInfo.income = 0;
-                    salaryTaxInfo.outgoingExpenses = 0;
-                    salaryTaxInfo.selfEduExpenses = 0;
-                    salaryTaxInfo.donations = 0;
-                    salaryTaxInfo.mpf = 0;
-
-
-
-                    salaryTaxInfo.dependentChildCurrentYear = 0;
-                    salaryTaxInfo.dependentChildOtherYear = 0;
-                    salaryTaxInfo.singleParent = 0;
-
+                    salaryTaxInfo.allowances=allowances;
+                    salaryTaxInfo.deductions=deductions;
 
                     $scope.living = living;
                     $scope.salaryTaxInfo = salaryTaxInfo;
@@ -51,17 +96,50 @@ define(
 
                 init();
                 var calculateLiving = function(year) {
-                    console.log('cal living'+year);
-                    $scope[year].cigaretteTax = ($scope.living.cigaretteCount|0) * $scope['y2013'].cigaretteTaxFormula;
-                    // $scope[year].cigaretteTax =$scope['y2013'].cigaretteTaxFormula * $scope.living.cigaretteCount|0;
-                    $scope[year].livingTax = $scope[year].cigaretteTax;
-                    console.log( $scope[year].cigaretteTax);
+                    //itemCount - itemTax - itemFormula
+
+                    livingItems.map(function(item) {
+                        $scope[year][item+'Tax'] = ($scope.living[item+'Count']|0) * $scope[year][item+'Formula'];
+                        console.log(item+'Tax'+$scope[year][item+'Tax']);
+                    })
+                    $scope[year].livingTax = livingItems.reduce(function(p,item) {return (p|0)+($scope[year][item+'Tax']|0)});
+                    console.log('total'+$scope[year].livingTax);
                     //todo underscore map
                 };
 
                 var calculate = function(year) {
                     calculateLiving(year);
-                    $scope[year].sumTax = $scope.salaryTaxInfo.income | 0 + 123;
+                    // $scope[year].sumTax = $scope.salaryTaxInfo.income | 0 + 123;
+                    $scope[year].total =  allItems.reduce(function(p,item) {return (p|0)+($scope[year][item+'Tax']|0)});
+                };
+
+                //cant handle nested
+                $scope.diff = function(propKey) {
+                    return $scope.$eval('y2014.'+propKey) - $scope.$eval('y2013.'+propKey);
+                    // return $scope['y2014'][propKey] - $scope['y2013'][propKey];
+                };
+
+                //http://www.gov.hk/tc/residents/taxes/taxfiling/taxrates/salariesrates.htm#pr
+                var calculateIncomeTax = function(year) {
+                    calculateDeductions(year);
+                    calculateAllowances(year);
+                };
+
+                var calculateDeductions = function(year) {
+                    deductionsItems.map(function(item) {
+                        $scope[year]['salary']['deductionsEntitled'][item] 
+                        = $scope.salaryTaxInfo['deductions'][item+'Count']*1;
+                    });
+                };
+                var calculateAllowances = function(year) {
+                    allowancesItems.map(function(item) {
+                        $scope[year]['salary']['allowancesEntitled'][item]=calculator.calAllowances(year,item,$scope.salaryTaxInfo.allowances[item+'Count']);
+                    });
+
+                     $scope[year]['salary']['allowancesEntitled']['totalChild']= $scope[year]['salary']['allowancesEntitled']['bornChild']+$scope[year]['salary']['allowancesEntitled']['child'];
+                    // _calculator.calAllowances
+                   // $scope[year].allowancesEntitled ={};
+
                 };
 
                 $scope.$watch('living', function(newVal, oldVal) {
@@ -69,17 +147,19 @@ define(
                     calculateLiving('y2014');
                 }, true);
 
-
                 $scope.$watch('salaryTaxInfo', function(newVal, oldVal) {
-                    calculate('y2013'); //TODO
-                    calculate('y2014');
+                    calculateIncomeTax('y2013');
+                    calculateIncomeTax('y2014');
+                    $scope.salaryTaxInfo['allowances']['singleParentCount'] =  $scope.salaryTaxInfo['allowances']['isSingleParent'] ==="true"?1:0;
+                    // salary
+                                        console.log(  $scope.salaryTaxInfo['allowances']['singleParentCount']);
                 }, true);
 
 
-            }, ['$scope'])
-            .controller('MyCtrl2',
-                function($scope) {
+            }, ['$scope']);
+            // .controller('MyCtrl2',
+            //     function($scope) {
 
-                }, ['$scope']);
+            //     }, ['$scope']);
 
     });

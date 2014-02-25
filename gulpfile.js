@@ -10,12 +10,12 @@ var less = require('gulp-less');
 
 server = lr();
 
-gulp.task('default', function(){
-  // place code for your default task here
-});
+// gulp.task('default', function(){
+//   // place code for your default task here
+// });
 
 gulp.task('default', ['listen'], function() {
-    gulp.src('public/*')
+    gulp.src(['public/*','public/templates/*','public/scripts/*'])
         .pipe(watch())
         .pipe(livereload(server));
      
