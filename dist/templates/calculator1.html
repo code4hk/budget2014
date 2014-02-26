@@ -32,12 +32,6 @@
           <tax-diff prop-key="total"></tax-diff>俾政府
       </div>
 
-    <div class="row gradient-line">
-        <div class="col-xs-12">   </div>
-        
-    </div>
-
-
   </div>
 
 </div>
@@ -119,16 +113,11 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-3">
-        <span class="fa fa-home"></span>公屋月租
-    </div>
-    <div class="col-xs-3"><input type="text" ng-model="living.publicHouseRentCount" maxlength="6" size="5">x 12 月</div>
-        <div class="col-xs-2 y2013tax">$ {{y2013.publicHouseRentTax | number:2}}
-        </div>
-        <div class="col-xs-2 y2014tax">$ {{y2014.publicHouseRentTax | number:2}}
+    <div class="col-xs-9">
+        <span class="icon-transportation_car"></span>公屋月租
     </div>
     <div class="col-xs-2"> 
-       <tax-diff prop-key="publicHouseRentTax"></tax-diff>
+       <tax-diff prop-key="livingTax"></tax-diff>
    </div>
 </div>
 

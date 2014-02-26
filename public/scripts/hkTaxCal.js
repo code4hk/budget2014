@@ -1,5 +1,7 @@
 define([], function() {
 
+//TODO rename as this is more than tax but also living feeds
+
 var _calculator = {};
 
 var rates = {
@@ -48,7 +50,8 @@ var rates = {
         }
     }
 };
-
+//TODO married
+//resided with
 var allowances = {
     "y2013": {
         "basic": 120000,
@@ -145,6 +148,10 @@ _calculator.calculateTax = function(income,deduction,totalAllowances,year) {
     var taxProgressive = _calculator.calProgressive(netChargeableIncome,year);
     var taxStandardRate = _calculator.calStandardRate(income-deduction,year);
     return taxProgressive <=taxStandardRate ?taxProgressive : taxStandardRate;
+
+};
+
+_calculator.calculateElectricty = function() {
 
 };
 

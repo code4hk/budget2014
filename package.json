@@ -30,18 +30,19 @@
     "gulp": "~3.5.0",
     "gulp-util": "~2.2.13",
     "gulp-watch": "~0.5.0",
-    "gulp-uglify": "~0.2.0",
+    "gulp-uglify": "*",
     "gulp-less": "1.2.*",
     "gulp-imagemin": "~0.1.4",
     "gulp-livereload": "~0.3.1",
     "gulp-concat": "2.1.*",
     "gulp-bower": "0.0.2",
     "tiny-lr": "~0.0.5",
-    "requirejs":"*",
-    "mocha":"*",
-    "chai":"*",
-    "gulp-requirejs":"*",
-    "gulp-uglify":"*"
+    "requirejs": "*",
+    "mocha": "*",
+    "chai": "*",
+    "gulp-requirejs": "*",
+    "gulp-usemin": "*",
+    "gulp-rev": "~0.2.1"
   },
   "bugs": {
     "url": "https://github.com/code4hk/budget2014/issues"

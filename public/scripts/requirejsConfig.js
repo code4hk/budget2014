@@ -36,6 +36,6 @@ var require = {
     "baseUrl": "scripts"
 };
 
-if(module != undefined){
+if(typeof(module) != 'undefined'){
     module.exports = require;
 }

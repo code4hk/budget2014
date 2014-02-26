@@ -8,9 +8,11 @@ var livereload = require('gulp-livereload');
 var concat = require('gulp-concat');
 var less = require('gulp-less');
 var bower = require('gulp-bower');
+var usemin = require('gulp-usemin');
 
 var rjs = require('gulp-requirejs');
 var uglify = require('gulp-uglify');
+var rev = require('gulp-rev');
 
 var rjsConfig = require('./public/scripts/requirejsConfig');
 
@@ -28,23 +30,49 @@ var concatJs = function() {
     rjsConfig.name = "main";
 
     rjs(rjsConfig).pipe(uglify({
-        outSourceMap: true
+        outSourceMap: true,
+        output:{
+            ascii_only:false
+        }
     }))
-        .pipe(gulp.dest('./public/dist')); // pipe it to the output DIR
+        .pipe(gulp.dest('dist/scripts/')); // pipe it to the output DIR
 };
 console.log(rjsConfig);
+
 gulp.task('build', function() {
     gulp.src('less/*.less')
-        .pipe(watch())
         .pipe(less())
-        .pipe(gulp.dest('public/css/'));
+        .pipe(gulp.dest('dist/css/'));
 
-    bower()
-        .pipe(gulp.dest('public/bower_components/'));
+     gulp.src(['public/scripts/require.min.js'])
+        .pipe(gulp.dest('dist/scripts/'));
 
+     gulp.src(['public/templates/**.html'])
+        .pipe(gulp.dest('dist/templates/'));
+
+
+
+    gulp.src('public/index.html')
+        .pipe(usemin({
+            // css: [minifyCss(), 'concat'],
+            // html: [minifyHtml({empty: true})],
+            js: []
+        }))
+        //discard it as concat may run before above
+        // .pipe(gulp.dest('dist/'));
+
+        //force overdie
+
+    //trick let this overwite the file
+    console.log('concat js');
     concatJs();
+
 });
 
+
+// fa-coffee
+//fa-cutlery
+// fa-bar M
 
 gulp.task('default', ['listen'], function() {
     gulp.src(['public/*', 'public/templates/*', 'public/scripts/*'])
@@ -57,7 +85,11 @@ gulp.task('default', ['listen'], function() {
         .pipe(gulp.dest('public/css/'))
         .pipe(livereload(server));
 
-            concatJs();
+    concatJs();
+
+
+    bower()
+        .pipe(gulp.dest('public/bower_components/'));
 });
 
 gulp.task('listen', function(next) {

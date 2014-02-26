@@ -38,6 +38,12 @@ define(
 
                 };
 
+                $scope['y2013'].publicHouseRentFormula = 1 * 12;
+                $scope['y2014'].publicHouseRentFormula = 1 * 11;
+
+                
+
+
                 //TODO
 
                 $scope['y2013'].firstCarFormula = 0;
@@ -76,7 +82,7 @@ define(
                 }
 
 
-                var livingItems = ['cigarette', 'water', 'electricity', 'firstCar', 'publicService'];
+                var livingItems = ['cigarette', 'water', 'electricity', 'firstCar', 'publicService','publicHouseRent'];
                 var allItems = ['living', 'salary'];
                 var allowancesItems = ["basic", "married", "child", "bornChild", "dependentSiblings", "dependent60Parents", "dependent60ParentsResidedWith", "dependent55Parents", "dependent55ParentsResidedWith", "singleParent", "disabledDependent"];
                 var deductionsItems = ["outgoingExpenses", "selfEduExpenses", "donations", "mpf", "others"];
