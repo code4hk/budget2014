@@ -10,7 +10,8 @@ var require = {
         "angular-sanitize": "../bower_components/angular-sanitize/angular-sanitize",
         "angular-route": "../bower_components/angular-route/angular-route",
         "spin-js": "../bower_components/spin.js/spin",
-        "hkTaxCal": "hkTaxCal"
+        "hkTaxCal": "hkTaxCal",
+        "ui-bootstrap":"ui-bootstrap-custom-tpls-0.10.0"
     },
     "shim": {
         "angular": {

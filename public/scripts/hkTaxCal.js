@@ -1,3 +1,7 @@
+if (typeof define !== 'function') {
+    var define = require('amdefine')(module);
+}
+
 define([], function() {
 
 //TODO rename as this is more than tax but also living feeds
@@ -59,11 +63,12 @@ var allowances = {
         "child": 70000,
         "bornChild": 70000,
         "dependentSiblings": 33000,
-        "dependentDisabledParents": 38000,
+        // "dependentDisabledParents": 38000,
+        // "dependentDisabledParentsResidedWith": 76000,
         "dependent60Parents": 38000,
-        "dependent60ParentsResidedWith": 38000,
+        "dependent60ParentsResidedWith": 76000,
         "dependent55Parents": 19000,
-        "dependent55ParentsResidedWith": 19000,
+        "dependent55ParentsResidedWith": 38000,
         "singleParent": 120000,
         "disabledDependent": 66000
     },
@@ -73,26 +78,17 @@ var allowances = {
         "child": 70000,
         "bornChild": 70000,
         "dependentSiblings": 33000,
-        "dependentDisabledParents": 38000,
-        "dependent60Parents": 40000, //TBC
-        "dependent60ParentsResidedWith": 40000,
-        "dependent55Parents": 20000, //TBC
-        "dependent55ParentsResidedWith": 20000,
+        // "dependentDisabledParents": 40000,
+        "dependent60Parents": 40000, 
+        "dependent60ParentsResidedWith": 80000,
+        "dependent55Parents": 20000, 
+        "dependent55ParentsResidedWith": 40000,
         "singleParent": 120000,
         "disabledDependent": 66000
     }
 
 };
 
-_calculator.calReductions = function(year,taxPayable) {
-//TODO
-    // return;
-};
-
-_calculator.calAllowances=function(year,key,count) {
-    return allowances[year][key]*(count|0);
-};
-//not same as deduction
 var reduction = {
     "y2013": {
      "percent": 0.75,
@@ -104,7 +100,18 @@ var reduction = {
         "maximum":"10000",
         "cases":["salary","profits","personal"]
     }
-}
+};
+
+_calculator.calReductions = function(year,taxPayable) {
+    var exceedMax = taxPayable > reduction[year]["maximum"];
+    return exceedMax ? reduction[year]["maximum"] : (taxPayable * reduction[year]["percent"]) ;
+};
+
+_calculator.calAllowances=function(year,key,count) {
+    return allowances[year][key]*(count|0);
+};
+//not same as deduction
+
 
 
 _calculator.calProgressive = function(income,year) {
@@ -143,12 +150,14 @@ _calculator.calStandardRate = function(incomeBeforeDeduction,year) {
 // totalAllowances
 //Tax payable is calculated at progressive ratees on your net chargeable income
 //or at standard rate on your net income ( before deduction of allowances), whichever is lower
-_calculator.calculateTax = function(income,deduction,totalAllowances,year) {
-    var netChargeableIncome = income -  totalAllowances - deduction;
+_calculator.calculateTax = function(year, income,deduction,totalAllowances) {
+    var deductedIncome =income-deduction;
+    deductedIncome = deductedIncome>0?deductedIncome:0;
+    var netChargeableIncome = deductedIncome -  totalAllowances;
+    netChargeableIncome = netChargeableIncome>0 ?netChargeableIncome :0;
     var taxProgressive = _calculator.calProgressive(netChargeableIncome,year);
-    var taxStandardRate = _calculator.calStandardRate(income-deduction,year);
+    var taxStandardRate = _calculator.calStandardRate(deductedIncome,year);
     return taxProgressive <=taxStandardRate ?taxProgressive : taxStandardRate;
-
 };
 
 _calculator.calculateElectricty = function() {

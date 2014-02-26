@@ -20,34 +20,40 @@ define(
                     $scope[year]['salary'] = {
                         "allowancesEntitled": {},
                         "deductionsEntitled": {},
-                        "tax": {}
-                    }
+                        "tax": {},
+                    };
+                    $scope[year]['salaryTax']=0;
                 };
 
                 initYear('y2013');
                 initYear('y2014');
 
                 $scope['y2013'].cigaretteFormula = 34.12;
-                $scope['y2014'].cigaretteFormula = 34.12 * 1.2;
+                $scope['y2014'].cigaretteFormula = 38.12;
 
                 $scope['y2013'].waterFormula = 1 * 12;
                 $scope['y2014'].waterFormula = 1.2 * 12; //TODO
 
-                $scope['y2013'].electricityFormula = 1 * 12;
-                $scope['y2014'].electricityFormula = function() {
-
+                $scope['y2013'].electricityFormula = function(month) {
+                    var afterDeduction= month*12-1800;
+                        if(afterDeduction<0){
+                            return 0;
+                        } else {
+                            return afterDeduction;
+                        }
                 };
+                $scope['y2014'].electricityFormula = 1*12;
 
-                $scope['y2013'].publicHouseRentFormula = 1 * 12;
+
+                $scope['y2013'].publicHouseRentFormula = 1 * 10;
                 $scope['y2014'].publicHouseRentFormula = 1 * 11;
-
-                
-
 
                 //TODO
 
                 $scope['y2013'].firstCarFormula = 0;
                 $scope['y2014'].firstCarFormula = 1000; //TODO
+
+
 
                 $scope['y2013'].publicServiceFormula = 1 * 4;
                 $scope['y2014'].publicServiceFormula = function(count) {
@@ -137,14 +143,14 @@ define(
                     $scope[year].livingTax = livingItems.reduce(function(p, item) {
                         return (p | 0) + ($scope[year][item + 'Tax'] | 0)
                     });
-                    console.log('total' + $scope[year].livingTax);
+
+                    console.log('livingTotal' + $scope[year].livingTax);
 
 
                     //todo underscore map
                 };
 
-                var calculate = function(year) {
-                    calculateLiving(year);
+                var calculateTotal = function(year) {
                     // $scope[year].sumTax = $scope.salaryTaxInfo.income | 0 + 123;
                     $scope[year].total = allItems.reduce(function(p, item) {
                         return (p | 0) + ($scope[year][item + 'Tax'] | 0)
@@ -162,15 +168,18 @@ define(
                     var income =  $scope.salaryTaxInfo.income;
                     var deduction=   calculateDeductions(year);
                     var totalAllowances = calculateAllowances(year);
-                    var tax = calculator.calculateTax(deduction,totalAllowances,income,year);
-                    // (income,deduction,totalAllowances,year) 
+                    var tax = calculator.calculateTax(year,income,deduction,totalAllowances);
                     var reductions = calculateReductions(year,tax);
-                    return tax-reductions;
 
+                    var incomeTax = tax-reductions;
+                    $scope[year]['salaryTax'] = incomeTax;
+                    console.log('incomeTax'+$scope[year].salaryTax);
+
+                    return incomeTax;
                 };
 
                 var calculateReductions = function(year) {
-                    return $scope[year]['salary']['reductions'] = calculator.calReductions(year);
+                    return $scope[year]['salary']['reductions'] = calculator.calReductions(year,$scope.salaryTaxInfo.income);
                 };
                 var calculateDeductions = function(year) {
                     deductionsItems.map(function(item) {
@@ -194,20 +203,28 @@ define(
                     return  $scope[year]['salary']['allowancesEntitled']['total'] = allowancesItems.reduce(function(p, item) {
                         return (p | 0) + ($scope[year]['salary']['allowancesEntitled'][item] | 0);
                     });
-
-                    // _calculator.calAllowances
-                    // $scope[year].allowancesEntitled ={};
-
                 };
+
+// salaryTax,  $scope[year]['salary']['allowancesEntitled']['total'], $scope[year]['salary']['reductions'], $scope[year]['salary']['deductionsEntitled']['total'] 
+
 
                 $scope.$watch('living', function(newVal, oldVal) {
                     calculateLiving('y2013');
                     calculateLiving('y2014');
+
+                    calculateTotal('y2013');
+                    calculateTotal('y2014');
+                    
                 }, true);
 
                 $scope.$watch('salaryTaxInfo', function(newVal, oldVal) {
                     calculateIncomeTax('y2013');
                     calculateIncomeTax('y2014');
+
+
+                    calculateTotal('y2013');
+                    calculateTotal('y2014');
+
                     $scope.salaryTaxInfo['allowances']['singleParentCount'] = $scope.salaryTaxInfo['allowances']['isSingleParent'] === "true" ? 1 : 0;
                     // salary
                     console.log($scope.salaryTaxInfo['allowances']['singleParentCount']);

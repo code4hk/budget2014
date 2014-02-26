@@ -42,6 +42,13 @@ suite('hkTaxCal', function() {
 
     test('calculate from obj', function() {});
 
+
+    test('calculate electricity', function() {
+
+        
+
+    });
+
 });
 
 // });

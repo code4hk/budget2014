@@ -4,7 +4,7 @@ define(
     ["angular",
         "controllers",
         "services",
-        "angular-route"
+        "angular-route","ui-bootstrap"
     ], function(angular) {
         angular.module('budget2014', [
             'ngRoute',
@@ -74,7 +74,7 @@ define(
                             $scope.y2014 = $scope.$parent.$y2014;
                             $scope.y2013 = $scope.$parent.$y2013;
                     }],
-                    template: '<span ng-class="payClass(true)" ng-show="diff(propKey)>0">多</span><span  ng-class="payClass(false)" ng-show="diff(propKey)<0">少 </span> <span ng-show="diff(propKey)!=0"> $ {{abs(diff(propKey))| number:2}}</span>'
+                    template: '<span ng-class="payClass(true)" ng-show="diff(propKey)>0">多</span><span  ng-class="payClass(false)" ng-show="diff(propKey)<0">少 </span><span  ng-class="\'payLess\'" ng-show="diff(propKey)==0">一樣 </span> <span ng-show="diff(propKey)!=0"> $ {{abs(diff(propKey))| number:2}}</span>'
                 };
         });
 
