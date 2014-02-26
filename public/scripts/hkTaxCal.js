@@ -79,7 +79,12 @@ var allowances = {
         "disabledDependent": 66000
     }
 
-}
+};
+
+_calculator.calReductions = function(year,taxPayable) {
+//TODO
+    // return;
+};
 
 _calculator.calAllowances=function(year,key,count) {
     return allowances[year][key]*(count|0);

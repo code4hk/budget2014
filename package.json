@@ -39,7 +39,9 @@
     "tiny-lr": "~0.0.5",
     "requirejs":"*",
     "mocha":"*",
-    "chai":"*"
+    "chai":"*",
+    "gulp-requirejs":"*",
+    "gulp-uglify":"*"
   },
   "bugs": {
     "url": "https://github.com/code4hk/budget2014/issues"

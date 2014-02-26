@@ -28,12 +28,12 @@ define(
                     scope: {
                         propKey: '@'
                     },
-                    controller: function($scope) {
+                    controller: ['$scope',function($scope) {
                         // $scope.diff =$parent.diff;
                         $scope.diff = $scope.$parent.diff;
                         $scope.y2014 = $scope.$parent.$y2014;
                         $scope.y2013 = $scope.$parent.$y2013;
-                    },
+                    }],
                     template: '<span class="payMore" ng-show="diff(propKey)>0">交多</span><span  class="payLess" ng-show="diff(propKey)<=0">交少 </span>  $ {{diff(propKey)| number:2}}'
                 };
             })
@@ -44,7 +44,7 @@ define(
                             propKey: '@',
                             negative: '@'
                         },
-                        controller: function($scope) {
+                        controller: ['$scope',function($scope) {
                             // $scope.diff = $scope.$parent.diff;
                             $scope.diff = function(propKey) {
                                 return $scope.$parent.diff(propKey);
@@ -69,7 +69,7 @@ define(
                             };
                             $scope.y2014 = $scope.$parent.$y2014;
                             $scope.y2013 = $scope.$parent.$y2013;
-                    },
+                    }],
                     template: '<span ng-class="payClass(true)" ng-show="diff(propKey)>0">多</span><span  ng-class="payClass(false)" ng-show="diff(propKey)<0">少 </span> <span ng-show="diff(propKey)!=0"> $ {{diff(propKey)| number:2}}</span>'
                 };
         });

@@ -35,3 +35,7 @@ var require = {
     },
     "baseUrl": "scripts"
 };
+
+if(module != undefined){
+    module.exports = require;
+}

@@ -75,17 +75,13 @@ div {
 }
 .payMore {
   color: red;
-  font-weight:bold;
 }
 .payLess {
   color: green;
-  font-weight:bold;
 }
-.change {
-  background-color: white;
-  color:black;
-  border-bottom:2px solid black;
+nav .calculator-header {
+  background-color: #444488;
 }
-small{
-  color:gray;
+body {
+  padding-top: 70px;
 }
