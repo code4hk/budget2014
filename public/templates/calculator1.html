@@ -97,9 +97,9 @@
         <span class="icon-svg"></span>煙草稅
     </div>
     <div class="col-xs-3"><input type="text" ng-model="living.cigaretteCount" maxlength="4" size="4">包<small>（20支捲煙）</small></div>
-    <div class="col-xs-2 y2013tax"><div ng-show="show2013">$ {{y2013.cigaretteTax | number:2}}</div>
+    <div class="col-xs-2 label label-1314 y2013tax"><div ng-show="show2013">$ {{y2013.cigaretteTax | number:2}}</div>
 </div>
-<div class="col-xs-2 y2014tax"><div ng-show="show2014">$ {{y2014.cigaretteTax | number:2}}</div>
+<div class="col-xs-2 y2014tax label label-1415"><div ng-show="show2014">$ {{y2014.cigaretteTax | number:2}}</div>
 </div>
 <div class="col-xs-2 label label-diff"> <tax-diff prop-key="cigaretteTax"></tax-diff>       </div>
 
@@ -109,8 +109,8 @@
         <span class="icon-transportation_car"></span>汽車首次登記稅
     </div>
     <div class="col-xs-3"><input type="text" ng-model="living.firstCarCount" maxlength="4" size="4">架 <small>以$14,0000計算</small></div>
-    <div class="col-xs-2 y2013tax">$ {{y2013.firstCarTax | number:2}}</div>
-    <div class="col-xs-2 y2014tax">$ {{y2014.firstCarTax | number:2}}</div>
+    <div class="col-xs-2 y2013tax label label-1314">$ {{y2013.firstCarTax | number:2}}</div>
+    <div class="col-xs-2 y2014tax label label-1415">$ {{y2014.firstCarTax | number:2}}</div>
     <div class="col-xs-2 label label-diff"><tax-diff prop-key="firstCarTax"></tax-diff></div>
 </div>
 
@@ -119,11 +119,11 @@
         <span class="fa fa-home"></span>公屋月租
     </div>
     <div class="col-xs-3"><input type="text" ng-model="living.publicHouseRentCount" maxlength="6" size="5">x 12 月</div>
-        <div class="col-xs-2 y2013tax">$ {{y2013.publicHouseRentTax | number:2}}
+        <div class="col-xs-2 label label-1314 y2013tax">$ {{y2013.publicHouseRentTax | number:2}}
         </div>
-        <div class="col-xs-2 y2014tax">$ {{y2014.publicHouseRentTax | number:2}}
+        <div class="col-xs-2 label label-1415 y2014tax">$ {{y2014.publicHouseRentTax | number:2}}
     </div>
-    <div class="col-xs-2"> 
+    <div class="col-xs-2 label label-diff"> 
        <tax-diff prop-key="publicHouseRentTax"></tax-diff>
    </div>
 </div>
@@ -147,9 +147,9 @@
         <div class="col-xs-3">
             <input type="text" ng-model="salaryTaxInfo.income" maxlength="10" size="10">
         </div>
-        <div class="col-xs-2 y2013tax">$ {{salaryTaxInfo.income}}</div>
-        <div class="col-xs-2 y2014tax">$ {{salaryTaxInfo.income}}</div>
-        <div class="col-xs-2"> </div>
+        <div class="col-xs-2 label label-1314 y2013tax">$ {{salaryTaxInfo.income}}</div>
+        <div class="col-xs-2 label label-1415 y2014tax">$ {{salaryTaxInfo.income}}</div>
+        <div class="col-xs-2 label label-diff"> </div>
     </div>
 
 
@@ -162,9 +162,9 @@
         <div class="col-xs-3">
             <input type="text" ng-model="salaryTaxInfo.deductions.othersCount" maxlength="10" size="10">
         </div>
-        <div class="col-xs-2 y2013tax">$ {{salaryTaxInfo.deductions.othersCount}}</div>
-        <div class="col-xs-2 y2014tax">$ {{salaryTaxInfo.deductions.othersCount}}</div>
-        <div class="col-xs-2"> </div>
+        <div class="col-xs-2 label label-1314 y2013tax">$ {{salaryTaxInfo.deductions.othersCount}}</div>
+        <div class="col-xs-2 label label-1415 y2014tax">$ {{salaryTaxInfo.deductions.othersCount}}</div>
+        <div class="col-xs-2 label label-diff"> </div>
     </div>
 
     <h4 class="calculator-heading">免稅額</h4>
@@ -175,9 +175,9 @@
             報稅年出生： <input type="text" ng-model="salaryTaxInfo.allowances.bornChildCount" maxlength="2" size="2">
         </div>
 
-        <div class="col-xs-2 y2013tax">$ {{y2013.salary.allowancesEntitled.totalChild}}</div>
-        <div class="col-xs-2 y2014tax">$ {{y2014.salary.allowancesEntitled.totalChild}}</div>
-        <div class="col-xs-2"> 
+        <div class="col-xs-2 label label-1314 y2013tax">$ {{y2013.salary.allowancesEntitled.totalChild}}</div>
+        <div class="col-xs-2 label label-1415 y2014tax">$ {{y2014.salary.allowancesEntitled.totalChild}}</div>
+        <div class="col-xs-2 label label-diff"> 
            <diff prop-key="salary.allowancesEntitled.totalChild" negative="false"></diff>
        </div>
 
@@ -191,9 +191,9 @@
             <option value="true">是</option>
         </select>
     </div>
-    <div class="col-xs-2 y2013tax">$ {{y2013.salary.allowancesEntitled.singleParent}} </div>
-    <div class="col-xs-2 y2014tax">$ {{y2013.salary.allowancesEntitled.singleParent}}</div>
-    <div class="col-xs-2"> 
+    <div class="col-xs-2 label label-1314 y2013tax">$ {{y2013.salary.allowancesEntitled.singleParent}} </div>
+    <div class="col-xs-2 label label-1415 y2014tax">$ {{y2013.salary.allowancesEntitled.singleParent}}</div>
+    <div class="col-xs-2 label label-diff"> 
        <diff prop-key="salary.allowancesEntitled.singleParent" negative="false"></diff>
    </div>
 </div>
@@ -204,9 +204,10 @@
     <div class="col-xs-12">寬減75%的2013-14年度薪俸稅及個人入息稅，上限為1萬元 <a href="http://www.budget.gov.hk/2014/chi/highlights.html">詳情</a></div>
 </div>
 <div class="row">
-    <div class="col-xs-2 y2013tax">*12-13* $ {{y2013.salary.reductions}} </div>
-    <div class="col-xs-2 y2014tax">*13-14* $ {{y2014.salary.reductions}}</div>
-    <div class="col-xs-2"> 
+    <div class="col-xs-6"><label>薪俸稅及個人入息稅寛減︰</label></div>
+    <div class="col-xs-2 label label-1314 y2013tax">*12-13* $ {{y2013.salary.reductions}} </div>
+    <div class="col-xs-2 label label-1415 y2014tax">*13-14* $ {{y2014.salary.reductions}}</div>
+    <div class="col-xs-2 label label-diff"> 
        <diff prop-key="salary.reductions" negative="false"></diff>
 
    </div>
@@ -221,10 +222,10 @@
         非同住:  <input type="text" ng-model="salaryTaxInfo.allowances.dependent60ParentsCount" maxlength="2" size="2">
     </div>
 
-    <div class="col-xs-2 y2013tax">$ {{y2013.salary.allowancesEntitled.dependent60ParentsTotal}} </div>
-    <div class="col-xs-2 y2014tax">$ {{y2013.salary.allowancesEntitled.dependent60ParentsTotal}}</div>
-    <div class="col-xs-2"> 
-       <diff prop-key="salary.allowancesEntitled.dependent60Parents" negative="false"></diff>
+    <div class="col-xs-2 label label-1314 y2013tax">$ {{y2013.salary.allowancesEntitled.dependent60ParentsTotal}} </div>
+    <div class="col-xs-2 label label-1415 y2014tax">$ {{y2014.salary.allowancesEntitled.dependent60ParentsTotal}}</div>
+    <div class="col-xs-2 label label-diff"> 
+       <diff prop-key="salary.allowancesEntitled.dependent60ParentsTotal" negative="false"></diff>
    </div>
 </div>
 <div class="row">
@@ -233,36 +234,56 @@
      非同住:  <input type="text" ng-model="salaryTaxInfo.allowances.dependent55ParentsCount" maxlength="2" size="2">
  </div>
 
- <div class="col-xs-2 y2013tax">$ {{y2013.salary.allowancesEntitled.dependent55ParentsTotal}} </div>
- <div class="col-xs-2 y2014tax">$ {{y2013.salary.allowancesEntitled.dependent55ParentsTotal}}</div>
- <div class="col-xs-2"> 
+ <div class="col-xs-2 label label-1314 y2013tax">$ {{y2013.salary.allowancesEntitled.dependent55ParentsTotal}} </div>
+ <div class="col-xs-2 label label-1415 y2014tax">$ {{y2014.salary.allowancesEntitled.dependent55ParentsTotal}}</div>
+ <div class="col-xs-2 label label-diff"> 
    <diff prop-key="salary.allowancesEntitled.dependent55ParentsTotal" negative="false"></diff>
 </div>
 </div>
 
 <div class="row">
-    <div class="col-xs-3"><label>基本免稅額</label></div>
-    <div class="col-xs-4">
-
-    </div>
-    <div class="col-xs-2 y2013tax">$ 0</div>
-    <div class="col-xs-2 y2014tax">$ 0</div>
+    <div class="col-xs-6"><label>基本免稅額</label></div>
+    <div class="col-xs-2 label label-1314 y2013tax">$ 0</div>
+    <div class="col-xs-2 label label-1415 y2014tax">$ 0</div>
+    <div class="col-xs-2 label label-diff"></div> 
 </div>
 
+<h4 class="calculator-heading">總計</h4>
 
 <div class="row">
-    <div class="col-xs-3"><label>總薪俸稅</label></div>
-    <div class="col-xs-4">
-
-    </div>
-    <div class="col-xs-2 y2013tax">$ 0</div>
-    <div class="col-xs-2 y2014tax"></div>
+    <div class="col-xs-6"><label>總收入</label></div>
+    <div class="col-xs-2 label label-1314 y2013tax">$ 0</div>
+    <div class="col-xs-2 label label-1415 y2014tax">$ 0</div>
+    <div class="col-xs-2 label label-diff"></div> 
 </div>
 
+<div class="row">
+    <div class="col-xs-6"><label>總扣除</label></div>
+    <div class="col-xs-2 label label-1314 y2013tax">$ 0</div>
+    <div class="col-xs-2 label label-1415 y2014tax">$ 0</div>
+    <div class="col-xs-2 label label-diff"></div> 
 </div>
-<label>總免稅額</label> 
+<div class="row">
+    <div class="col-xs-6"><label>總免稅額</label></div>
+    <div class="col-xs-2 label label-1314 y2013tax">$ 0</div>
+    <div class="col-xs-2 label label-1415 y2014tax">$ 0</div>
+    <div class="col-xs-2 label label-diff"></div> 
+</div>
+<div class="row">
+    <div class="col-xs-6"><label>總寬減</label></div>
+    <div class="col-xs-2 label label-1314 y2013tax">$ 0</div>
+    <div class="col-xs-2 label label-1415 y2014tax">$ 0</div>
+    <div class="col-xs-2 label label-diff"></div> 
+</div>
+<div class="row">
+    <div class="col-xs-6"><label>總計</label></div>
+    <div class="col-xs-2 label label-1314 y2013tax">$ 0</div>
+    <div class="col-xs-2 label label-1415 y2014tax">$ 0</div>
+    <div class="col-xs-2 label label-diff"></div> 
+</div>
+</div>
 
-<label>稅款寬免款額</label>
+
 
 
 <a class="control-btn fui-arrow-down" href="#"> </a>

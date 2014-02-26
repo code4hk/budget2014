@@ -74,6 +74,11 @@ gulp.task('build', function() {
 // fa-bar M
 
 gulp.task('default', ['listen'], function() {
+    console.log('Bower in action...');
+    bower()
+        .pipe(gulp.dest('public/bower_components/'));
+
+    console.log('Hooking public holder to livereload server...');
     gulp.src(['public/*', 'public/templates/*', 'public/scripts/*'])
         .pipe(watch())
         .pipe(livereload(server));
@@ -87,8 +92,6 @@ gulp.task('default', ['listen'], function() {
     concatJs();
 
 
-    bower()
-        .pipe(gulp.dest('public/bower_components/'));
 });
 
 gulp.task('listen', function(next) {
