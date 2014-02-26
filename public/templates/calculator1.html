@@ -1,7 +1,8 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
    <div class="container-fluid calculator-header">
     <div class="row header-row">
-        <div class="col-xs-4"> Budget2014</div>
+        <h2 class="calculator-header-title"> 財政預算案2014－15 計算器</h2>
+        <div class="col-xs-4"></div>
         <div class="col-xs-1">
             <!-- <span class="yearCheckboxLabel">2013/14</span> -->
         </div>
@@ -25,15 +26,14 @@
     </div>
     <div class="row change">
         <div class="col-xs-6"></div>
-        <div class=" col-xs-2">2013/14 年交 $ <strong>{{y2013.total}}  </strong></div>
-        <div class=" col-xs-2">2014/15 年交 $ <strong>{{y2014.total}}</strong> 
+        <div class=" col-xs-2 label label-success">13/14年交 $ <strong>{{y2013.total}}  </strong></div>
+        <div class=" col-xs-2 label label-danger">14/15年交 $ <strong>{{y2014.total}}</strong> 
         </div>
-        <div class="col-xs-2">今年
-          <tax-diff prop-key="total"></tax-diff>俾政府
+        <div class="col-xs-2 label label-warning">今年<tax-diff prop-key="total"></tax-diff>俾政府
       </div>
 
-    <div class="row gradient-line">
-        <div class="col-xs-12">   </div>
+    <div class="row">
+        <div class="col-xs-12 gradient-line">   </div>
         
     </div>
 
@@ -57,14 +57,13 @@
         <div class="col-xs-3">
             <i class="fa fa-tint"></i>水費
         </div>
-        <div class="col-xs-3">2013交：<input type="text" ng-model="living.waterCount" maxlength="6" size="5">x 12 月</div>
-        <div class="col-xs-2 y2013tax">$ {{y2013.waterTax | number:2}}
+        <div class="col-xs-3 ">2013交：<input class="label-input" type="text" ng-model="living.waterCount" maxlength="6" size="5">x 12 月</div>
+        <div class="col-xs-2 y2013tax label label-1314">$ {{y2013.waterTax | number:2}}
         </div>
-        <div class="col-xs-2 y2014tax">$ {{y2014.waterTax | number:2}}
+        <div class="col-xs-2 y2014tax label label-1415">$ {{y2014.waterTax | number:2}}
         </div>
-        <div class="col-xs-2"><tax-diff prop-key="waterTax"></tax-diff> </div>
+        <div class="col-xs-2 label label-diff"><tax-diff prop-key="waterTax"></tax-diff> </div>
     </div>
-
 <!--     <div class="row">
         <div class="col-xs-3">
             <i class="fa fa-flash"></i>電費
@@ -84,11 +83,11 @@
         <i class="fa fa-flash"></i>差餉
     </div>
     <div class="col-xs-3">2013交：<input type="text" ng-model="living.publicServiceCount" maxlength="4" size="4">x 4 季</div>
-    <div class="col-xs-2 y2013tax">$ {{y2013.publicServiceTax | number:2}}
+    <div class="col-xs-2 y2013tax label label-1314">$ {{y2013.publicServiceTax | number:2}}
     </div>
-    <div class="col-xs-2 y2014tax">$ {{y2014.publicServiceTax | number:2}}
+    <div class="col-xs-2 y2014tax label label-1415">$ {{y2014.publicServiceTax | number:2}}
     </div>
-    <div class="col-xs-2"> 
+    <div class="col-xs-2 label label-diff"> 
        <tax-diff prop-key="publicServiceTax"></tax-diff>
    </div>
 </div>
@@ -97,15 +96,12 @@
     <div class="col-xs-3">
         <span class="icon-svg"></span>煙草稅
     </div>
-
-
-
     <div class="col-xs-3"><input type="text" ng-model="living.cigaretteCount" maxlength="4" size="4">包<small>（20支捲煙）</small></div>
     <div class="col-xs-2 y2013tax"><div ng-show="show2013">$ {{y2013.cigaretteTax | number:2}}</div>
 </div>
 <div class="col-xs-2 y2014tax"><div ng-show="show2014">$ {{y2014.cigaretteTax | number:2}}</div>
 </div>
-<div class="col-xs-2"> <tax-diff prop-key="cigaretteTax"></tax-diff>       </div>
+<div class="col-xs-2 label label-diff"> <tax-diff prop-key="cigaretteTax"></tax-diff>       </div>
 
 </div>
 <div class="row">
@@ -115,7 +111,7 @@
     <div class="col-xs-3"><input type="text" ng-model="living.firstCarCount" maxlength="4" size="4">架 <small>以$14,0000計算</small></div>
     <div class="col-xs-2 y2013tax">$ {{y2013.firstCarTax | number:2}}</div>
     <div class="col-xs-2 y2014tax">$ {{y2014.firstCarTax | number:2}}</div>
-    <div class="col-xs-2"><tax-diff prop-key="firstCarTax"></tax-diff></div>
+    <div class="col-xs-2 label label-diff"><tax-diff prop-key="firstCarTax"></tax-diff></div>
 </div>
 
 <div class="row">

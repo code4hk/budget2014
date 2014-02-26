@@ -69,7 +69,6 @@ gulp.task('build', function() {
 
 });
 
-
 // fa-coffee
 //fa-cutlery
 // fa-bar M
