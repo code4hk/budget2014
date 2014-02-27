@@ -116,6 +116,7 @@ define(
                     salaryTaxInfo.allowances = allowances;
                     salaryTaxInfo.deductions = deductions;
                     salaryTaxInfo.maritalStatus='single';
+                    salaryTaxInfo['allowances']['isSingleParent']=false;
                     $scope.living = living;
                     $scope.salaryTaxInfo = salaryTaxInfo;
                 };
@@ -140,7 +141,7 @@ define(
 
                     $scope[year].livingTax = livingItems.reduce(function(p, item) {
                         return (p | 0) + ($scope[year][item + 'Tax'] | 0)
-                    });
+                    },0);
 
                     console.log('livingTotal' + $scope[year].livingTax);
 
@@ -152,7 +153,7 @@ define(
                     // $scope[year].sumTax = $scope.salaryTaxInfo.income | 0 + 123;
                     $scope[year].total = allItems.reduce(function(p, item) {
                         return (p | 0) + ($scope[year][item + 'Tax'] | 0)
-                    });
+                    },0);
                 };
 
                 //cant handle nested
