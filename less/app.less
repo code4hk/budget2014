@@ -107,7 +107,7 @@ nav .calculator-header{
          
 }
 
-body { padding-top: 30px; }
+body { padding-top: 40px; }
 
 
 //red orance green blue gray
@@ -120,6 +120,7 @@ body { padding-top: 30px; }
 }
 .calculator-header-title{
     margin-top:0px;
+    margin-bottom:0px;
 }
 
 
@@ -130,13 +131,14 @@ body { padding-top: 30px; }
 .label-1314{
     &:extend(.label-success);
 }*/
-.label-1314, .label-1415, .label-diff,.label-input{
+.label-1314, .label-1415, .label-diff,.label-input,.label-custom{
     color:black;
     border-style: solid;
     border-width: 1px;
     font-style: normal;
     font-weight:200;
 }
+
 
 .label-1314{
     border-color:@tim-green;
@@ -147,13 +149,19 @@ body { padding-top: 30px; }
 .label-diff{
     border-color:@tim-orange;
 }
-.label-input{
+
+.calculator-container input{
+    .label-custom;
      display:inline;
      border-color:@tim-grey;  
      border-radius:  .25em;
 }
 
+.label-pay{
+    .label-custom;
+        border-width: 0px;
 
+}
 
 
 
@@ -185,4 +193,17 @@ body { padding-top: 30px; }
 
 .icon-svg:before {
     content: "\e600";
+}
+.tax-item{
+//    padding-left:1.5em;
+}
+h4 small{
+    text-decoration:inherit;
+}
+.total{
+    text-decoration:underline;
+    font-weight:100;
+}
+.total-total{
+        font-weight:700;
 }

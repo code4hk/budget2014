@@ -54,14 +54,12 @@ define(
                 $scope['y2014'].firstCarFormula = 1000; //TODO
 
 
-
-                $scope['y2013'].publicServiceFormula = 1 * 4;
+ 
+                $scope['y2013'].publicServiceFormula = function(count) {
+                    return Math.max(count - 1500, 0) * 4;
+                };
                 $scope['y2014'].publicServiceFormula = function(count) {
-                    if (count > 1500) {
-                        return (count - 1500) * 2 + count * 2;
-                    } else {
-                        return count * 4;
-                    }
+                    return Math.max(count - 1500, 0) * 2 + count * 2;
                 };
 
                 //                 Private cars- 
@@ -105,7 +103,7 @@ define(
                         allowances[key + 'Count'] = 0;
                     });
                     allowances["basicCount"] = 1;
-
+                    //either basic or married
 
                     var deductions = {};
                     deductionsItems.map(function(key) {
@@ -117,7 +115,7 @@ define(
                     salaryTaxInfo.income = 0;
                     salaryTaxInfo.allowances = allowances;
                     salaryTaxInfo.deductions = deductions;
-
+                    salaryTaxInfo.maritalStatus='single';
                     $scope.living = living;
                     $scope.salaryTaxInfo = salaryTaxInfo;
                 };
@@ -168,18 +166,18 @@ define(
                     var income =  $scope.salaryTaxInfo.income;
                     var deduction=   calculateDeductions(year);
                     var totalAllowances = calculateAllowances(year);
-                    var tax = calculator.calculateTax(year,income,deduction,totalAllowances);
-                    var reductions = calculateReductions(year,tax);
+                    var taxPayable = calculator.calculateTax(year,income,deduction,totalAllowances);
+                    var reductions = calculateReductions(year,taxPayable);
 
-                    var incomeTax = tax-reductions;
+                    var incomeTax = taxPayable-reductions;
                     $scope[year]['salaryTax'] = incomeTax;
-                    console.log('incomeTax'+$scope[year].salaryTax);
+                    console.log('incomeTax '+year+' '+$scope[year].salaryTax);
 
                     return incomeTax;
                 };
 
-                var calculateReductions = function(year) {
-                    return $scope[year]['salary']['reductions'] = calculator.calReductions(year,$scope.salaryTaxInfo.income);
+                var calculateReductions = function(year,taxPayable) {
+                    return $scope[year]['salary']['reductions'] = calculator.calReductions(year,taxPayable);
                 };
                 var calculateDeductions = function(year) {
                     deductionsItems.map(function(item) {
@@ -187,7 +185,7 @@ define(
                     });
                    return  $scope[year]['salary']['deductionsEntitled']['total'] = deductionsItems.reduce(function(p, item) {
                         return (p | 0) + ($scope[year]['salary']['deductionsEntitled'][item] | 0)
-                    });
+                    },0);
                     // return 
                 };
                 var calculateAllowances = function(year) {
@@ -195,14 +193,18 @@ define(
                         $scope[year]['salary']['allowancesEntitled'][item] = calculator.calAllowances(year, item, $scope.salaryTaxInfo.allowances[item + 'Count']);
                     });
 
+
                     $scope[year]['salary']['allowancesEntitled']['totalChild'] = $scope[year]['salary']['allowancesEntitled']['bornChild'] + $scope[year]['salary']['allowancesEntitled']['child'];
 
                     $scope[year]['salary']['allowancesEntitled']['dependent55ParentsTotal'] = $scope[year]['salary']['allowancesEntitled']['dependent55Parents'] + $scope[year]['salary']['allowancesEntitled']['dependent55ParentsResidedWith'];
                     $scope[year]['salary']['allowancesEntitled']['dependent60ParentsTotal'] = $scope[year]['salary']['allowancesEntitled']['dependent60Parents'] + $scope[year]['salary']['allowancesEntitled']['dependent60ParentsResidedWith'];
 
+                     $scope[year]['salary']['allowancesEntitled']['basicPerStatus'] =  Math.max($scope[year]['salary']['allowancesEntitled']['basic'],$scope[year]['salary']['allowancesEntitled']['married']);
+
+
                     return  $scope[year]['salary']['allowancesEntitled']['total'] = allowancesItems.reduce(function(p, item) {
                         return (p | 0) + ($scope[year]['salary']['allowancesEntitled'][item] | 0);
-                    });
+                    },0);
                 };
 
 // salaryTax,  $scope[year]['salary']['allowancesEntitled']['total'], $scope[year]['salary']['reductions'], $scope[year]['salary']['deductionsEntitled']['total'] 
@@ -217,6 +219,19 @@ define(
                     
                 }, true);
 
+                var toggleAllowancesForMarried = function(isMarried) {
+                    if(isMarried){
+                    $scope.salaryTaxInfo.allowances["marriedCount"] =1;
+                    $scope.salaryTaxInfo.allowances["basicCount"] =0;
+
+                    $scope.salaryTaxInfo['allowances']['isSingleParent'] =false;
+                    }else{
+                    $scope.salaryTaxInfo.allowances["marriedCount"] =0;
+                    $scope.salaryTaxInfo.allowances["basicCount"] =1;
+                    }
+
+
+                };
                 $scope.$watch('salaryTaxInfo', function(newVal, oldVal) {
                     calculateIncomeTax('y2013');
                     calculateIncomeTax('y2014');
@@ -225,11 +240,14 @@ define(
                     calculateTotal('y2013');
                     calculateTotal('y2014');
 
+                    toggleAllowancesForMarried($scope.salaryTaxInfo.maritalStatus ==='married');
+
                     $scope.salaryTaxInfo['allowances']['singleParentCount'] = $scope.salaryTaxInfo['allowances']['isSingleParent'] === "true" ? 1 : 0;
                     // salary
-                    console.log($scope.salaryTaxInfo['allowances']['singleParentCount']);
-                }, true);
+                    //if married, reset as 0
 
+
+                }, true);
 
             }
         ]);

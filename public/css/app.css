@@ -85,7 +85,7 @@ nav .calculator-header {
   color: #999999;
 }
 body {
-  padding-top: 30px;
+  padding-top: 40px;
 }
 .gradient-line {
   min-height: 0.5em;
@@ -96,6 +96,7 @@ body {
 }
 .calculator-header-title {
   margin-top: 0px;
+  margin-bottom: 0px;
 }
 /*.label-1415{
     &:extend(.label-info);
@@ -107,7 +108,8 @@ body {
 .label-1314,
 .label-1415,
 .label-diff,
-.label-input {
+.label-input,
+.label-custom {
   color: black;
   border-style: solid;
   border-width: 1px;
@@ -123,10 +125,23 @@ body {
 .label-diff {
   border-color: #ffa500;
 }
-.label-input {
+.calculator-container input {
+  color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-style: normal;
+  font-weight: 200;
   display: inline;
   border-color: #999999;
   border-radius: .25em;
+}
+.label-pay {
+  color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-style: normal;
+  font-weight: 200;
+  border-width: 0px;
 }
 @font-face {
   font-family: 'icomoon';
@@ -150,4 +165,14 @@ body {
 }
 .icon-svg:before {
   content: "\e600";
+}
+h4 small {
+  text-decoration: inherit;
+}
+.total {
+  text-decoration: underline;
+  font-weight: 100;
+}
+.total-total {
+  font-weight: 700;
 }

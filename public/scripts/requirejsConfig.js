@@ -11,16 +11,12 @@ var require = {
         "angular-route": "../bower_components/angular-route/angular-route",
         "spin-js": "../bower_components/spin.js/spin",
         "hkTaxCal": "hkTaxCal",
-        "ui-bootstrap":"ui-bootstrap-custom-tpls-0.10.0"
+        "ui-bootstrap":"ui-bootstrap-custom-tpls-0.10.0",
+        "angular-busy":"../"
     },
     "shim": {
         "angular": {
             "exports": "angular"
-        },
-        "angular-bootstrap": {
-            "deps": [
-                "angular"
-            ]
         },
         "angular-route": {
             "deps": [
@@ -32,7 +28,15 @@ var require = {
                 "angular"
             ]
         },
-        "hkTaxCal": {}
+        "hkTaxCal": {},
+        "ui-bootstrap":{
+            "deps":["angular"]
+        },
+        "angular-busy": {
+            "deps": [
+                "angular"
+            ]
+        }
     },
     "baseUrl": "scripts"
 };

@@ -61,7 +61,7 @@ var allowances = {
         "basic": 120000,
         "married": 240000,
         "child": 70000,
-        "bornChild": 70000,
+        "bornChild": 140000,
         "dependentSiblings": 33000,
         // "dependentDisabledParents": 38000,
         // "dependentDisabledParentsResidedWith": 76000,
@@ -76,7 +76,7 @@ var allowances = {
         "basic": 120000,
         "married": 240000,
         "child": 70000,
-        "bornChild": 70000,
+        "bornChild": 140000,
         "dependentSiblings": 33000,
         // "dependentDisabledParents": 40000,
         "dependent60Parents": 40000, 
@@ -152,8 +152,8 @@ _calculator.calStandardRate = function(incomeBeforeDeduction,year) {
 //or at standard rate on your net income ( before deduction of allowances), whichever is lower
 _calculator.calculateTax = function(year, income,deduction,totalAllowances) {
     var deductedIncome =income-deduction;
-    deductedIncome = deductedIncome>0?deductedIncome:0;
-    var netChargeableIncome = deductedIncome -  totalAllowances;
+    deductedIncome = Math.max(deductedIncome,0);
+    var netChargeableIncome = Math.max(deductedIncome -  totalAllowances,0);
     netChargeableIncome = netChargeableIncome>0 ?netChargeableIncome :0;
     var taxProgressive = _calculator.calProgressive(netChargeableIncome,year);
     var taxStandardRate = _calculator.calStandardRate(deductedIncome,year);
