@@ -145,7 +145,7 @@
 <section>
     <h3 class="calculator-heading">薪俸稅</h3>
     <div class="row">
-            <div class="col-xs-3 tax-item">總收入:</div>
+            <div class="col-xs-3 tax-item">總收入</div>
             <div class="col-xs-3">
                 $ <input tooltip-html-unsafe="{{incomeInputTooltip}}" type="text" ng-model="salaryTaxInfo.income" maxlength="10" size="10">
             </div>
@@ -172,7 +172,7 @@
         <h4 class="calculator-heading">免稅額</h4>
         <div class="row">
         <div class="col-xs-3">
-            <label>婚姻狀況：</label>  </div>
+            <label>婚姻狀況</label>  </div>
             <div class="col-xs-9">        
                 <input type = "radio" name = "maritalStatus" ng-model="salaryTaxInfo.maritalStatus"
                 id = "single" value = "single"
@@ -229,10 +229,10 @@
 <div class="row">
 </div>
 <div class="row">
-    <div class="col-xs-3">父母／祖父母(60歲或以上／殘疾)</div>
+    <div class="col-xs-3">供養父母／祖父母(60歲或以上／殘疾)數目</div>
     <!--TODO resided-->
-    <div class="col-xs-3">同住: <input type="text" ng-model="salaryTaxInfo.allowances.dependent60ParentsResidedWithCount" maxlength="2" size="2">
-        非同住:  <input type="text" ng-model="salaryTaxInfo.allowances.dependent60ParentsCount" maxlength="2" size="2">
+    <div class="col-xs-3">同住: <input type="text" tooltip-html-unsafe="{{dependentParentsInputTooltip}}" ng-model="salaryTaxInfo.allowances.dependent60ParentsResidedWithCount" maxlength="2" size="2">
+        非同住:  <input type="text" tooltip-html-unsafe="{{dependentParentsInputTooltip}}" ng-model="salaryTaxInfo.allowances.dependent60ParentsCount" maxlength="2" size="2">
     </div>
 
     <div class="col-xs-2 label label-1314 y2013tax">$ {{y2013.salary.allowancesEntitled.dependent60ParentsTotal}} </div>
@@ -242,9 +242,9 @@
  </div>
 </div>
 <div class="row">
-    <div class="col-xs-3">父母／祖父母(55-59歲)</div>
-    <div class="col-xs-3">同住: <input type="text" ng-model="salaryTaxInfo.allowances.dependent55ParentsResidedWithCount" maxlength="2" size="2">
-       非同住:  <input type="text" ng-model="salaryTaxInfo.allowances.dependent55ParentsCount" maxlength="2" size="2">
+    <div class="col-xs-3">供養父母／祖父母(55-59歲)數目</div>
+    <div class="col-xs-3">同住: <input tooltip-html-unsafe="{{dependentParentsInputTooltip}}" type="text" ng-model="salaryTaxInfo.allowances.dependent55ParentsResidedWithCount" maxlength="2" size="2">
+       非同住:  <input type="text" tooltip-html-unsafe="{{dependentParentsInputTooltip}}" ng-model="salaryTaxInfo.allowances.dependent55ParentsCount" maxlength="2" size="2">
    </div>
 
    <div class="col-xs-2 label label-1314 y2013tax">$ {{y2013.salary.allowancesEntitled.dependent55ParentsTotal}} </div>
@@ -256,7 +256,7 @@
 
 <h4 class="calculator-heading"><span tooltip-html-unsafe="{{reductionsTooltip}}" tooltip-placement="right">寬減 <i  class="fa fa-info-circle" taget="_blank"></i></span><a href="http://www.budget.gov.hk/2014/chi/highlights.html" target="_blank">詳情</a></small></h4>
 <div class="row">
-    <div class="col-xs-6">註：14-15年預算調整2013-14年寬減稅額，這裏使用12-13及13-14方便比較)</div>
+    <div class="col-xs-6">註：14-15年預算調整13-14年寬減稅額，這裏使用12-13及13-14方便比較)</div>
     <div class="col-xs-2 label label-1314 y2013tax">$ {{y2013.salary.reductions}} </div>
     <div class="col-xs-2 label label-1415 y2014tax"> $ {{y2014.salary.reductions}}</div>
     <div class="col-xs-2 label label-diff"> 
@@ -265,8 +265,8 @@
 </div>
 <div class="row">
  <div class="col-xs-6"></div>
-    <div class="col-xs-2 "><em>*12-13*</em> </div>
-    <div class="col-xs-2 "><em>*13-14*</em> </div>
+    <div class="col-xs-2 " style="text-align: right;"><em>*12-13*</em> </div>
+    <div class="col-xs-2 " style="text-align: right;"><em>*13-14*</em> </div>
     <div class="col-xs-2"></div>
 </div>
 

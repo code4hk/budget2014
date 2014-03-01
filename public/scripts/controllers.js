@@ -97,6 +97,7 @@ define(
                 // $scope.incomeInputTooltip='所有薪金、工資及董事酬金均須要課繳薪俸稅';
                 $scope.childInputTooltip='假若子女於課說年度(4月1日至來年3月31日)出生，可獲額外免稅額';
                 $scope.reductionsTooltip='13-14/14-15:寬減75%的年度薪俸稅及個人入息稅，上限為1萬元 ';
+                $scope.dependentParentsInputTooltip='14-15:提高供養父母或祖父母的免稅額, 60歲或以上提高$2,000至$4,0000；55-59歲提高$1000至$2,0000';
                 var livingItems = ['cigarette', 'water', 'electricity', 'firstCar', 'publicService','publicHouseRent'];
                 var allItems = ['living', 'salary'];
                 var allowancesItems = ["basic", "married", "child", "bornChild", "dependentSiblings", "dependent60Parents", "dependent60ParentsResidedWith", "dependent55Parents", "dependent55ParentsResidedWith", "singleParent", "disabledDependent"];
