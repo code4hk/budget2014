@@ -92,7 +92,7 @@ body {
   background: linear-gradient(to right, #d9534f, #ffa500, #5cb85c, #5bc0de, #999999);
 }
 .label {
-  font-size: 1.2em;
+  font-size: 1em;
 }
 .calculator-header-title {
   margin-top: 0px;
@@ -115,6 +115,11 @@ body {
   border-width: 1px;
   font-style: normal;
   font-weight: 200;
+  padding: 3px 0px 3px 0px;
+  line-height: 1.5em;
+  margin: 0 auto;
+  top: 0;
+  bottom: 0;
 }
 .label-1314 {
   border-color: #5cb85c;
@@ -131,6 +136,11 @@ body {
   border-width: 1px;
   font-style: normal;
   font-weight: 200;
+  padding: 3px 0px 3px 0px;
+  line-height: 1.5em;
+  margin: 0 auto;
+  top: 0;
+  bottom: 0;
   display: inline;
   border-color: #999999;
   border-radius: .25em;
@@ -141,6 +151,11 @@ body {
   border-width: 1px;
   font-style: normal;
   font-weight: 200;
+  padding: 3px 0px 3px 0px;
+  line-height: 1.5em;
+  margin: 0 auto;
+  top: 0;
+  bottom: 0;
   border-width: 0px;
 }
 @font-face {

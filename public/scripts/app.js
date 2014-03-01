@@ -8,8 +8,8 @@ define(
     ], function(angular) {
         angular.module('budget2014', [
             'ngRoute',
-            'budget2014.controllers'
-            // 'ui.bootstrap'
+            'budget2014.controllers',
+            'ui.bootstrap'
         ]).
         config(['$routeProvider',
             function($routeProvider) {
@@ -21,7 +21,9 @@ define(
                     redirectTo: '/section1'
                 });
             }
-        ])
+        ]).config(['$tooltipProvider',function(tooltipProvider) {
+            // tooltipProvider.options({placement:'right'});
+        }])
             .directive('taxDiff', function() {
                 return {
                     restrict: 'EA',

@@ -2,6 +2,7 @@
 
 /* Controllers */
 
+//Count better name as input
 //TODO extract tax cal lib or service and test it
 
 define(
@@ -28,8 +29,8 @@ define(
                 initYear('y2013');
                 initYear('y2014');
 
-                $scope['y2013'].cigaretteFormula = 34.12;
-                $scope['y2014'].cigaretteFormula = 38.12;
+                $scope['y2013'].cigaretteFormula = 34.12 * 52;
+                $scope['y2014'].cigaretteFormula = 38.12 * 52;
 
                 $scope['y2013'].waterFormula = 1 * 12;
                 $scope['y2014'].waterFormula = 1.2 * 12; //TODO
@@ -84,8 +85,18 @@ define(
                         "electricity": 1
                     }
                 }
-
-
+                //TODO map with localization variable // formatting
+                //prefer delay on hide tooltip to support links inside
+                // delay: { show: 500, hide: 100 }
+                $scope.electricityInputTooltip= '<div>電費以每月計算</div><div>13-14:政府2013年6月至2014年6月每月補貼$150,總計$1800</div> <div>14-15: 取消電費補貼安排</div>';
+                $scope.publicServiceInputTooltip= '<div>差餉以每季計算</div><div>13-14:全年每季均獲差餉上限$1500寬減,總計$6000</div> <div>14-15: 只有首兩季費獲每季上限$1500的寬減,總計$3000</div>';
+                $scope.publicHouseRentInputTooltip='<div>13-14:為公屋租戶代繳兩個月租金</div><div>14-15:今年減至只代繳一個月</div>';
+                $scope.cigaretteInputTooltip = '<div>13-14年:每支1.7</div><div>14-15年:$1.9</div>';
+                $scope.deductionsInputTooltip='支出及開支、進修、MPF、慈善捐款、長者住宿照顧開支等';
+                // <small><a href="http://www.gov.hk/tc/residents/taxes/salaries/allowances/deductions/index.htm" target="_blank">詳情</a></small> 
+                // $scope.incomeInputTooltip='所有薪金、工資及董事酬金均須要課繳薪俸稅';
+                $scope.childInputTooltip='假若子女於課說年度(4月1日至來年3月31日)出生，可獲額外免稅額';
+                $scope.reductionsTooltip='13-14/14-15:寬減75%的年度薪俸稅及個人入息稅，上限為1萬元 ';
                 var livingItems = ['cigarette', 'water', 'electricity', 'firstCar', 'publicService','publicHouseRent'];
                 var allItems = ['living', 'salary'];
                 var allowancesItems = ["basic", "married", "child", "bornChild", "dependentSiblings", "dependent60Parents", "dependent60ParentsResidedWith", "dependent55Parents", "dependent55ParentsResidedWith", "singleParent", "disabledDependent"];

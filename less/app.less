@@ -116,7 +116,7 @@ body { padding-top: 40px; }
     background: linear-gradient(to right, @tim-red, @tim-orange, @tim-green,  @tim-blue, @tim-grey);
 }
 .label{
-    font-size:1.2em;
+    font-size:1em;
 }
 .calculator-header-title{
     margin-top:0px;
@@ -131,13 +131,20 @@ body { padding-top: 40px; }
 .label-1314{
     &:extend(.label-success);
 }*/
+
+
 .label-1314, .label-1415, .label-diff,.label-input,.label-custom{
     color:black;
     border-style: solid;
     border-width: 1px;
     font-style: normal;
     font-weight:200;
+    padding: 3px 0px 3px 0px;
+    line-height:1.5em;
+    margin:0 auto;
+    top:0; bottom:0; 
 }
+
 
 
 .label-1314{
@@ -206,4 +213,7 @@ h4 small{
 }
 .total-total{
    //     font-weight:700;
+}
+.tooltip{
+  //  text-align:left;
 }

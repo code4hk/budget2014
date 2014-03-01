@@ -58,6 +58,7 @@
     <div class="content">Content</div> -->
     <section>
         <h3 class="calculator-heading">生活開支</h3>
+        <!-- 輸入資料，便可計算新預算案下今年交多幾多錢！ -->
 <!--     <div class="row">
         <div class="col-xs-3 tax-item">
             <i class="fa fa-tint"></i>水費
@@ -71,9 +72,9 @@
     </div> -->
     <div class="row">
         <div class="col-xs-3">
-            <i class="fa fa-flash"></i>電費 
+            <i class="fa fa-flash"></i>電費 <a href="https://www.clponline.com.hk/FAQ/ResidentialCustomersFAQ/Pages/govSubsidy.aspx#a01"><i class="fa fa-info-circle" taget="_blank"></i>中電資料</a>
         </div>
-        <div class="col-xs-3">2013交：$ <input class="label-input" type="text" ng-model="living.electricityCount" maxlength="4" size="4">x 12 月<i class="fa fa-info-circle"></i></div>
+        <div class="col-xs-3">2013交：每月$ <input tooltip-html-unsafe="{{electricityInputTooltip}}" class="label-input" type="text" ng-model="living.electricityCount" maxlength="4" size="4">x 12 月</div>
         <div class="col-xs-2 y2013tax label label-1314">$ {{y2013.electricityTax | number:2}}
         </div>
         <div class="col-xs-2 y2014tax label label-1415">$ {{y2014.electricityTax | number:2}}
@@ -85,9 +86,9 @@
 
  <div class="row">
     <div class="col-xs-3 tax-item">
-        <i class="fa fa-flash"></i>差餉
+        <span tooltip-html-unsafe="{{publicServiceInputTooltip}}" tooltip-placement="right"><i class="fa fa-flash"></i>差餉</span>
     </div>
-    <div class="col-xs-3 ">2013交：$ <input class="label-input" type="text" ng-model="living.publicServiceCount" maxlength="4" size="4">x 4 季<i class="fa fa-info-circle"></i></div>
+    <div class="col-xs-3 ">2013交：每季$ <input tooltip-html-unsafe="{{publicServiceInputTooltip}}" class="label-input" type="text" ng-model="living.publicServiceCount" maxlength="4" size="4">x 4 季</div>
     <div class="col-xs-2 y2013tax label label-1314">$ {{y2013.publicServiceTax | number:2}}
     </div>
     <div class="col-xs-2 y2014tax label label-1415">$ {{y2014.publicServiceTax | number:2}}
@@ -98,10 +99,10 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-3 tax-item">
-        <span class="icon-svg"></span>煙草稅
+    <div class="col-xs-3 tax-item" >
+        <span tooltip-html-unsafe="{{cigaretteInputTooltip}}" tooltip-placement="right"><span class="icon-svg"></span>煙草稅</span><a href="http://www.customs.gov.hk/tc/trade_facilitation/dutiable/types/index.html#tobacco"><i class="fa fa-info-circle"></i>入境署資料</a>
     </div>
-    <div class="col-xs-3 tax-item"><input type="text" ng-model="living.cigaretteCount" maxlength="4" size="4">包<small>（20支捲煙）</small></div>
+    <div class="col-xs-3 tax-item">每星期 <input tooltip-html-unsafe="{{cigaretteInputTooltip}}" type="text" ng-model="living.cigaretteCount" maxlength="4" size="4">包<small>（20支捲煙）</small></div>
     <div class="col-xs-2 label label-1314 y2013tax"><div ng-show="show2013">$ {{y2013.cigaretteTax | number:2}}</div></div>
     <div class="col-xs-2 y2014tax label label-1415"><div ng-show="show2014">$ {{y2014.cigaretteTax | number:2}}</div></div>
     <div class="col-xs-2 label label-diff"> <tax-diff prop-key="cigaretteTax"></tax-diff>       </div>
@@ -118,9 +119,9 @@
 
 <div class="row">
     <div class="col-xs-3 tax-item">
-        <span class="fa fa-home"></span>公屋月租
+        <span tooltip-html-unsafe="{{publicHouseRentInputTooltip}}" tooltip-placement="right"><span class="fa fa-home"></span>公屋月租</span>
     </div>
-    <div class="col-xs-3 tax-item">$ <input type="text" ng-model="living.publicHouseRentCount" maxlength="6" size="5">x 12 月</div>
+    <div class="col-xs-3 tax-item">每月$ <input tooltip-html-unsafe="{{publicHouseRentInputTooltip}}" type="text" ng-model="living.publicHouseRentCount" maxlength="6" size="5">x 12 月</div>
     <div class="col-xs-2 label label-1314 y2013tax">$ {{y2013.publicHouseRentTax | number:2}}
     </div>
     <div class="col-xs-2 label label-1415 y2014tax">$ {{y2014.publicHouseRentTax | number:2}}
@@ -144,8 +145,34 @@
 <section>
     <h3 class="calculator-heading">薪俸稅</h3>
     <div class="row">
+            <div class="col-xs-3 tax-item">總收入:</div>
+            <div class="col-xs-3">
+                $ <input tooltip-html-unsafe="{{incomeInputTooltip}}" type="text" ng-model="salaryTaxInfo.income" maxlength="10" size="10">
+            </div>
+            <div class="col-xs-2 label label-1314 y2013tax">$ {{salaryTaxInfo.income}}</div>
+            <div class="col-xs-2 label label-1415 y2014tax">$ {{salaryTaxInfo.income}}</div>
+            <div class="col-xs-2 label "> </div>
+        </div>
+
+
+        <h4 class="calculator-heading">扣除</h4>
+
+        <!-- <div class="col-xs-12"></div> -->
+        <!-- </div> -->
+        <div class="row">
+            <div class="col-xs-3 tax-item">總扣除:</div>
+            <div class="col-xs-3">
+                $ <input tooltip-html-unsafe="{{deductionsInputTooltip}}" type="text" ng-model="salaryTaxInfo.deductions.othersCount" maxlength="10" size="10">
+            </div>
+            <div class="col-xs-2 label label-1314 y2013tax">$ {{salaryTaxInfo.deductions.othersCount}}</div>
+            <div class="col-xs-2 label label-1415 y2014tax">$ {{salaryTaxInfo.deductions.othersCount}}</div>
+            <div class="col-xs-2 label "> </div>
+        </div>
+
+        <h4 class="calculator-heading">免稅額</h4>
+        <div class="row">
         <div class="col-xs-3">
-            <label>婚姻狀況</label>  </div>
+            <label>婚姻狀況：</label>  </div>
             <div class="col-xs-9">        
                 <input type = "radio" name = "maritalStatus" ng-model="salaryTaxInfo.maritalStatus"
                 id = "single" value = "single"
@@ -157,32 +184,6 @@
                 <label for = "married">已婚</label>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-3 tax-item">總收入:</div>
-            <div class="col-xs-3">
-                $ <input type="text" ng-model="salaryTaxInfo.income" maxlength="10" size="10">
-            </div>
-            <div class="col-xs-2 label label-1314 y2013tax">$ {{salaryTaxInfo.income}}</div>
-            <div class="col-xs-2 label label-1415 y2014tax">$ {{salaryTaxInfo.income}}</div>
-            <div class="col-xs-2 label "> </div>
-        </div>
-
-
-        <h4 class="calculator-heading">扣除 <small>支出及開支、進修、MPF、慈善捐款、長者住宿照顧開支等<a href="http://www.gov.hk/tc/residents/taxes/salaries/allowances/deductions/index.htm" target="_blank">詳情</a></small> </h4>
-        
-        <!-- <div class="col-xs-12"></div> -->
-        <!-- </div> -->
-        <div class="row">
-            <div class="col-xs-3 tax-item">總扣除:</div>
-            <div class="col-xs-3">
-                $ <input type="text" ng-model="salaryTaxInfo.deductions.othersCount" maxlength="10" size="10">
-            </div>
-            <div class="col-xs-2 label label-1314 y2013tax">$ {{salaryTaxInfo.deductions.othersCount}}</div>
-            <div class="col-xs-2 label label-1415 y2014tax">$ {{salaryTaxInfo.deductions.othersCount}}</div>
-            <div class="col-xs-2 label "> </div>
-        </div>
-
-        <h4 class="calculator-heading">免稅額</h4>
         <div class="row">
             <div class="col-xs-3 tax-item">基本</div>
             <div class="col-xs-3">
@@ -198,8 +199,8 @@
      <div class="row">
         <div class="col-xs-3 tax-item">供養子女數目</div>
         <div class="col-xs-3">
-            <input type="text" ng-model="salaryTaxInfo.allowances.childCount" maxlength="2" size="2">
-            報稅年出生： <input type="text" ng-model="salaryTaxInfo.allowances.bornChildCount" maxlength="2" size="2">
+            <input tooltip-html-unsafe="{{childInputTooltip}}" type="text" ng-model="salaryTaxInfo.allowances.childCount" maxlength="2" size="2">
+            課稅年出生： <input tooltip-html-unsafe="{{childInputTooltip}}" type="text" ng-model="salaryTaxInfo.allowances.bornChildCount" maxlength="2" size="2">
         </div>
 
         <div class="col-xs-2 label label-1314 y2013tax">$ {{y2013.salary.allowancesEntitled.totalChild}}</div>
@@ -228,7 +229,7 @@
 <div class="row">
 </div>
 <div class="row">
-    <div class="col-xs-3">父母／祖父母(60歲以上／殘疾)</div>
+    <div class="col-xs-3">父母／祖父母(60歲或以上／殘疾)</div>
     <!--TODO resided-->
     <div class="col-xs-3">同住: <input type="text" ng-model="salaryTaxInfo.allowances.dependent60ParentsResidedWithCount" maxlength="2" size="2">
         非同住:  <input type="text" ng-model="salaryTaxInfo.allowances.dependent60ParentsCount" maxlength="2" size="2">
@@ -241,7 +242,7 @@
  </div>
 </div>
 <div class="row">
-    <div class="col-xs-3">父母／祖父母(55-60歲)</div>
+    <div class="col-xs-3">父母／祖父母(55-59歲)</div>
     <div class="col-xs-3">同住: <input type="text" ng-model="salaryTaxInfo.allowances.dependent55ParentsResidedWithCount" maxlength="2" size="2">
        非同住:  <input type="text" ng-model="salaryTaxInfo.allowances.dependent55ParentsCount" maxlength="2" size="2">
    </div>
@@ -253,18 +254,20 @@
  </div>
 </div>
 
-<h4 class="calculator-heading">寬減 <small>寬減75%的2013-14年度薪俸稅及個人入息稅，上限為1萬元 <a href="http://www.budget.gov.hk/2014/chi/highlights.html" target="_blank">詳情</a></small></h4>
+<h4 class="calculator-heading"><span tooltip-html-unsafe="{{reductionsTooltip}}" tooltip-placement="right">寬減 <i  class="fa fa-info-circle" taget="_blank"></i></span><a href="http://www.budget.gov.hk/2014/chi/highlights.html" target="_blank">詳情</a></small></h4>
 <div class="row">
-    <div class="col-xs-12"></div>
-</div>
-<div class="row">
-    <div class="col-xs-6">薪俸稅及個人入息稅寛減︰（14－15年預算週整12013年稅額)</div>
-    <div class="col-xs-2 label label-1314 y2013tax"><em>*12-13*</em> $ {{y2013.salary.reductions}} </div>
-    <div class="col-xs-2 label label-1415 y2014tax"><em>*13-14*</em> $ {{y2014.salary.reductions}}</div>
+    <div class="col-xs-6">註：14-15年預算調整2013-14年寬減稅額，這裏使用12-13及13-14方便比較)</div>
+    <div class="col-xs-2 label label-1314 y2013tax">$ {{y2013.salary.reductions}} </div>
+    <div class="col-xs-2 label label-1415 y2014tax"> $ {{y2014.salary.reductions}}</div>
     <div class="col-xs-2 label label-diff"> 
      <diff prop-key="salary.reductions" negative="false"></diff>
-
  </div>
+</div>
+<div class="row">
+ <div class="col-xs-6"></div>
+    <div class="col-xs-2 "><em>*12-13*</em> </div>
+    <div class="col-xs-2 "><em>*13-14*</em> </div>
+    <div class="col-xs-2"></div>
 </div>
 
 <h4 class="calculator-heading">總計</h4>
