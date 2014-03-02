@@ -81,10 +81,110 @@ div {
 }
 nav .calculator-header {
   background-color: #444488;
+  background-color: #FFFFFF;
+  color: #999999;
 }
 body {
-  padding-top: 70px;
+  padding-top: 40px;
 }
 .gradient-line {
-  background: linear-gradient(to right, #ff0000, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+  min-height: 0.5em;
+  background: linear-gradient(to right, #d9534f, #ffa500, #5cb85c, #5bc0de, #999999);
+}
+.label {
+  font-size: 1em;
+}
+.calculator-header-title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+/*.label-1415{
+    &:extend(.label-info);
+}
+
+.label-1314{
+    &:extend(.label-success);
+}*/
+.label-1314,
+.label-1415,
+.label-diff,
+.label-input,
+.label-custom {
+  color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-style: normal;
+  font-weight: 200;
+  padding: 3px 0px 3px 0px;
+  line-height: 1.5em;
+  margin: 0 auto;
+  top: 0;
+  bottom: 0;
+}
+.label-1314 {
+  border-color: #5cb85c;
+}
+.label-1415 {
+  border-color: #d9534f;
+}
+.label-diff {
+  border-color: #ffa500;
+}
+.calculator-container input {
+  color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-style: normal;
+  font-weight: 200;
+  padding: 3px 0px 3px 0px;
+  line-height: 1.5em;
+  margin: 0 auto;
+  top: 0;
+  bottom: 0;
+  display: inline;
+  border-color: #999999;
+  border-radius: .25em;
+}
+.label-pay {
+  color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-style: normal;
+  font-weight: 200;
+  padding: 3px 0px 3px 0px;
+  line-height: 1.5em;
+  margin: 0 auto;
+  top: 0;
+  bottom: 0;
+  border-width: 0px;
+}
+@font-face {
+  font-family: 'icomoon';
+  src: url('http://i.icomoon.io/public/temp/3189a29eaf/UntitledProject2/icomoon.eot?7nj1jy');
+  src: url('http://i.icomoon.io/public/temp/3189a29eaf/UntitledProject2/icomoon.eot?#iefix7nj1jy') format('embedded-opentype'), url('http://i.icomoon.io/public/temp/3189a29eaf/UntitledProject2/icomoon.woff?7nj1jy') format('woff'), url('http://i.icomoon.io/public/temp/3189a29eaf/UntitledProject2/icomoon.ttf?7nj1jy') format('truetype'), url('http://i.icomoon.io/public/temp/3189a29eaf/UntitledProject2/icomoon.svg?7nj1jy#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-svg:before {
+  content: "\e600";
+}
+h4 small {
+  text-decoration: inherit;
+}
+.total {
+  text-decoration: underline;
+  font-weight: 100;
 }
