@@ -8,14 +8,6 @@ div {
 .header-row {
   margin-top: 10px;
 }
-.calculator-header {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  bottom: auto;
-  background-color: #444488;
-  color: white;
-}
 .outer {
   position: relative;
   height: 100px;
@@ -24,11 +16,10 @@ div {
   position: absolute;
   bottom: 0;
   z-index: 2;
-  left: 0;
   top: auto;
 }
 .content {
-  margin-top: 50px;
+  margin-top: 2em;
 }
 .flatRoundedCheckbox {
   width: 80px;
@@ -94,16 +85,24 @@ body {
 .label {
   font-size: 1em;
 }
+.annotations {
+  font-size: 0.8em;
+  padding: 3px 0px 3px 0px;
+  color: gray;
+}
 .calculator-header-title {
-  margin-top: 0px;
+  color: #999999;
   margin-bottom: 0px;
+  position: relative;
+  margin-top: 1.2em;
+  padding-left: 3em;
 }
 /*.label-1415{
-    &:extend(.label-info);
+&:extend(.label-info);
 }
 
 .label-1314{
-    &:extend(.label-success);
+&:extend(.label-success);
 }*/
 .label-1314,
 .label-1415,
@@ -129,6 +128,9 @@ body {
 }
 .label-diff {
   border-color: #ffa500;
+}
+.calculator-container {
+  box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.0745098) 0px 1px 5px 0px;
 }
 .calculator-container input {
   color: black;
@@ -187,4 +189,29 @@ h4 small {
 .total {
   text-decoration: underline;
   font-weight: 100;
+}
+.site {
+  text-align: justify;
+  /*width: 42em;*/
+  max-width: 84em;
+  margin-right: auto;
+  margin-left: auto;
+}
+.navbar {
+  max-width: 84em;
+  text-align: justify;
+  margin-right: auto;
+  margin-left: auto;
+  position: fixed;
+  left: 0;
+}
+.calculator-header {
+  top: 0;
+  bottom: auto;
+  background-color: #444488;
+  color: white;
+}
+.navbar div {
+  margin-left: 0;
+  margin-right: 0;
 }

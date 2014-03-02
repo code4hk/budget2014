@@ -29,6 +29,7 @@ define(
                 initYear('y2013');
                 initYear('y2014');
 
+                //tax only noy price
                 $scope['y2013'].cigaretteFormula = 34.12 * 52;
                 $scope['y2014'].cigaretteFormula = 38.12 * 52;
 
