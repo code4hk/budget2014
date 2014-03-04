@@ -94,7 +94,7 @@ body {
   color: #999999;
   margin-bottom: 0px;
   position: relative;
-  margin-top: 1.2em;
+  margin-top: 2em;
   padding-left: 3em;
 }
 /*.label-1415{
@@ -116,7 +116,8 @@ body {
   font-weight: 200;
   padding: 3px 0px 3px 0px;
   line-height: 1.5em;
-  margin: 0 auto;
+  margin-top: 0;
+  margin-right: auto;
   top: 0;
   bottom: 0;
 }
@@ -140,7 +141,8 @@ body {
   font-weight: 200;
   padding: 3px 0px 3px 0px;
   line-height: 1.5em;
-  margin: 0 auto;
+  margin-top: 0;
+  margin-right: auto;
   top: 0;
   bottom: 0;
   display: inline;
@@ -155,10 +157,17 @@ body {
   font-weight: 200;
   padding: 3px 0px 3px 0px;
   line-height: 1.5em;
-  margin: 0 auto;
+  margin-top: 0;
+  margin-right: auto;
   top: 0;
   bottom: 0;
   border-width: 0px;
+}
+.tax-item-input {
+  /*text-align:right;*/
+  text-align: left;
+  padding-left: 0px;
+  /*should for sm only*/
 }
 @font-face {
   font-family: 'icomoon';
@@ -191,7 +200,6 @@ h4 small {
   font-weight: 100;
 }
 .site {
-  text-align: justify;
   /*width: 42em;*/
   max-width: 84em;
   margin-right: auto;
@@ -214,4 +222,10 @@ h4 small {
 .navbar div {
   margin-left: 0;
   margin-right: 0;
+}
+h3 {
+  font-size: 1.6em;
+}
+.content .row div {
+  margin-bottom: 0.5em;
 }

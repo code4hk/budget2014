@@ -121,7 +121,8 @@ color:gray;
 color:@tim-grey;
 margin-bottom:0px;
 position:relative; 
-margin-top:1.2em;
+//margin-top:1.2em;
+margin-top:2em;
 padding-left:3em;
 
 }
@@ -144,7 +145,8 @@ font-style: normal;
 font-weight:200;
 padding: 3px 0px 3px 0px;
 line-height:1.5em;
-margin:0 auto;
+margin-top:0;
+margin-right: auto;
 top:0; bottom:0;
 }
 //media query h3 size for mobile
@@ -169,6 +171,8 @@ border-color:@tim-orange;
 display:inline;
 border-color:@tim-grey;  
 border-radius:  .25em;
+
+//width:80%; //should for sm only, also only "large attri"
 }
 
 .label-pay{
@@ -178,7 +182,12 @@ border-width: 0px;
 }
 
 
-
+.tax-item-input{
+    /*text-align:right;*/
+        text-align:left;
+        padding-left:0px;
+    /*should for sm only*/
+}
 
 @font-face {
 font-family: 'icomoon';
@@ -227,7 +236,7 @@ font-weight:100;
 }
 
 .site{
-text-align: justify;
+//text-align: justify;
 /*width: 42em;*/
 max-width:84em;
 //min-width: 500px;
@@ -255,4 +264,12 @@ color:white;
     margin-left:0;
     margin-right:0;
 
+}
+
+h3{
+    font-size: 1.6em;
+}
+
+.content .row div {
+    margin-bottom:0.5em;
 }

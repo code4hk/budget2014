@@ -1,10 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>財政預算案2014－15計算器</title>
   <meta charset="utf-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>財政預算案2014－15計算器</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -14,8 +13,9 @@
 <!--     <header>
         財政預算案2014－15 計算器
       </header> -->
-      <section ng-view>
-      </section>
+      <div>
+        <section class="site" ng-view>
+        </section>
       <!--   <section>
         <div class="container-fluid">
             <div class="row">
@@ -33,24 +33,25 @@
       <footer>
         <!-- &copy; 2014 All right reserved  -->
       </footer>
-      <!-- Remove the requirejsConfig in prd, meanwhile keep the tag to use requirejs by replace it iduring gulp-->
-      <script src="/scripts/require.min.js"></script>
-      <script src="/scripts/concat.js"></script>
+    </div>
+    <!-- Remove the requirejsConfig in prd, meanwhile keep the tag to use requirejs by replace it iduring gulp-->
+    <script src="/scripts/require.min.js"></script>
+    <script src="/scripts/concat.js"></script>
 
-      <script type="text/javascript">
+    <script type="text/javascript">
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-48536294-1']);
-      _gaq.push(['_trackPageview']);
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-48536294-1']);
+    _gaq.push(['_trackPageview']);
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
-      </script>
+    </script>
 
-
-    </body>
-    </html>
+<iframe src="//budget.code4.hk"></iframe>
+  </body>
+  </html>
