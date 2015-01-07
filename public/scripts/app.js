@@ -38,7 +38,7 @@ define(
                         $scope.y2014 = $scope.$parent.$y2014;
                         $scope.y2013 = $scope.$parent.$y2013;
                     }],
-                    template: '<span class="payMore" ng-show="diff(propKey)>0">交多</span><span  class="payLess" ng-show="diff(propKey)<=0">交少 </span>  $ {{abs(diff(propKey))| number:2}}'
+                    template: '<span class="payMore" ng-show="diff(propKey)>0">交多</span><span  class="payLess" ng-show="diff(propKey)<=0">交少 </span>  $ {{abs(diff(propKey))| number:0}}'
                 };
             })
             .directive('diff', function() {
@@ -76,7 +76,7 @@ define(
                             $scope.y2014 = $scope.$parent.$y2014;
                             $scope.y2013 = $scope.$parent.$y2013;
                     }],
-                    template: '<span ng-class="payClass(true)" ng-show="diff(propKey)>0">多</span><span  ng-class="payClass(false)" ng-show="diff(propKey)<0">少 </span><span  ng-class="\'payLess\'" ng-show="diff(propKey)==0">一樣 </span> <span ng-show="diff(propKey)!=0"> $ {{abs(diff(propKey))| number:2}}</span>'
+                    template: '<span ng-class="payClass(true)" ng-show="diff(propKey)>0">多</span><span  ng-class="payClass(false)" ng-show="diff(propKey)<0">少 </span><span  ng-class="\'payLess\'" ng-show="diff(propKey)==0">一樣 </span> <span ng-show="diff(propKey)!=0"> $ {{abs(diff(propKey))| number:0}}</span>'
                 };
         });
 

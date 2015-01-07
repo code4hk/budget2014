@@ -24,6 +24,12 @@ var server = lr();
 // });
 
 
+var deployIEScripts = function() {
+    gulp.src(['public/bower_components/es5-shim/es5-shim.min.js', 'public/bower_components/json3/lib/json3.min.js'])
+                .pipe(gulp.dest('public/scripts/'))
+        .pipe(gulp.dest('dist/scripts/'));
+};
+
 // https://github.com/gulpjs/gulp/blob/master/docs/recipes/running-tasks-in-series.md#running-tasks-in-series
 
 var concatJs = function() {
@@ -75,6 +81,8 @@ gulp.task('dist', ['build', 'build2', 'pre-dist-clean']);
 
 gulp.task('build', function(cb) {
 
+    deployIEScripts();
+
     var lessStream = gulp.src('less/*.less')
         .pipe(less())
         .pipe(gulp.dest('dist/css/'));
@@ -97,10 +105,17 @@ gulp.task('build', function(cb) {
 
 });
 
+
 gulp.task('default', ['listen'], function() {
 
     bower()
         .pipe(gulp.dest('public/bower_components/'));
+
+    //TODO ensure bower end
+
+    deployIEScripts();
+
+
     gulp.src(['public/*', 'public/templates/*', 'public/scripts/*'])
         .pipe(watch())
         .pipe(livereload(server));

@@ -5,6 +5,8 @@
 Thumbs.db
 
 ## General
+dist/*
+pre-dist/*
 logs/*
 public/bower_components/
 node_modules/

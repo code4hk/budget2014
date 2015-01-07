@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:ng="http://angularjs.org" id="ng-app" lang="en">
 <head>
   <meta charset="utf-8"> 
   <title>財政預算案2014－15計算器</title>
@@ -8,8 +8,13 @@
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="css/app.css" />
-</head>
-<body >
+   <!--[if IE 8]>
+  <script src="/scripts/es5-shim.min.js"></script>
+   <script src="/scripts/json3.min.js"></script>
+   <![endif]-->
+
+ </head>
+ <body >
 <!--     <header>
         財政預算案2014－15 計算器
       </header> -->
@@ -53,8 +58,21 @@
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
     })();
 
-    </script>
-  </body>
-  </html>
+//     <!-- Google Analytics -->
+// <script>
+// (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+// (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+// m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+// })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+// ga('create', 'UA-48536294-1', 'auto');  // Replace with your property ID.
+// ga('send', 'pageview');
+
+// </script>
+
+   </script>
+ </body>
+ </html>
